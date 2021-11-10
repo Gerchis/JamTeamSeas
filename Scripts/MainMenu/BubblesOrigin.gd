@@ -17,6 +17,5 @@ func _process(delta: float) -> void:
 	if actualTime > bubbleTime:
 		var instance := scene.instance()
 		add_child(instance)
-		#var bubbles = instance.get_script()
 		instance.random_spawn()
 		actualTime = 0

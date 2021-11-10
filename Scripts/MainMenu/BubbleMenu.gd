@@ -17,7 +17,8 @@ func _process(delta: float) -> void:
 	actualTime += delta
 	if actualTime > lifespan:
 		queue_free()
+	
+	modulate.a = 1 - (actualTime/lifespan)
 
 func random_spawn():
 	translate(Vector2(random.randf_range(-random_range,random_range),0))
-	print(random.randf_range(-random_range,random_range))
