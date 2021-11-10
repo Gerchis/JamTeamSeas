@@ -1,57 +1,45 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Sprites/Reef/SpriteSheetAnimationReefCoral_002.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Reef/SandReef_001.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Reef/2DReef_002.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Reef/BackgroundReef_001.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/MainMenu/BubblesOrigin.gd" type="Script" id=5]
-[ext_resource path="res://Sprites/Reef/Update_SpriteSheetAnimationReefCoral_001.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Reef/Update01_SpriteSheetAnimationReefCoral_001.png" type="Texture" id=6]
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 554, 666 )
+[sub_resource type="Animation" id=1]
+resource_name = "Reef_01"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
 
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 554, 0, 554, 666 )
-
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 1108, 0, 554, 666 )
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
-"loop": true,
-"name": "default",
-"speed": 2.0
-} ]
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 519, 440 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 519, 0, 519, 440 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 1038, 0, 519, 440 )
-
-[sub_resource type="SpriteFrames" id=8]
-animations = [ {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
-"loop": true,
-"name": "default",
-"speed": 2.0
-} ]
+[sub_resource type="Animation" id=2]
+resource_name = "Reed_05"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -75,18 +63,30 @@ position = Vector2( 513.285, 311.451 )
 scale = Vector2( 0.539702, 0.539702 )
 texture = ExtResource( 3 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 141.184, 429.636 )
-scale = Vector2( 0.527076, 0.527076 )
-frames = SubResource( 4 )
-playing = true
+[node name="Reef_01" type="Sprite" parent="."]
+position = Vector2( 135.331, 433.706 )
+scale = Vector2( 0.509354, 0.509354 )
+texture = ExtResource( 6 )
+hframes = 3
+frame = 1
+region_enabled = true
+region_rect = Rect2( 10, 0, 1660, 680 )
 
-[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
-position = Vector2( 846.631, 444.544 )
-scale = Vector2( 0.726352, 0.726352 )
-frames = SubResource( 8 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Reef_01"]
+autoplay = "Reef_01"
+method_call_mode = 1
+anims/Reef_01 = SubResource( 1 )
+
+[node name="Reef_05" type="Sprite" parent="."]
+position = Vector2( 875.696, 474.141 )
+scale = Vector2( 0.591807, 0.591807 )
+texture = ExtResource( 1 )
+hframes = 3
 frame = 2
-playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Reef_05"]
+autoplay = "Reed_05"
+anims/Reed_05 = SubResource( 2 )
 
 [node name="BubblesOrigin" type="Node2D" parent="."]
 position = Vector2( 52.2405, 379.756 )
