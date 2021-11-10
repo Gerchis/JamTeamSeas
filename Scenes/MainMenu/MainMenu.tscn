@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Sprites/Reef/SpriteSheetAnimationReefCoral_002.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Reef/NoAnimationReef_002.png" type="Texture" id=2]
@@ -9,6 +9,24 @@
 [ext_resource path="res://Sprites/Reef/2DReefCoral_003.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/Seaweed/AnimationSeaWeed_003.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Seaweed/AnimationSeaWeed_002.png" type="Texture" id=9]
+[ext_resource path="res://shader/Distortion.tres" type="Material" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Seaweed_01"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Seaweed_01"
@@ -27,25 +45,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "Seaweed_01"
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-
-[sub_resource type="Animation" id=1]
-resource_name = "Reef_01"
+[sub_resource type="Animation" id=3]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -97,25 +97,7 @@ tracks/3/keys = {
 "values": [ Rect2( -14, 0, 1103, 675 ), Rect2( -12, 0, 1103, 675 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Seaweed_01"
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-
 [sub_resource type="Animation" id=4]
-resource_name = "Seaweed_01"
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -148,7 +130,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=6]
-resource_name = "Seaweed_01"
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -181,7 +162,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=8]
-resource_name = "Seaweed_01"
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -198,6 +178,22 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=9]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=10]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -253,7 +249,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Seaweed_04"]
 autoplay = "Seaweed_01"
-anims/Seaweed_01 = SubResource( 2 )
+anims/Seaweed_01 = SubResource( 1 )
 
 [node name="Seaweed_09" type="Sprite" parent="."]
 self_modulate = Color( 0.5561, 0.5561, 0.67, 0.984314 )
@@ -267,7 +263,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Seaweed_09"]
 autoplay = "Seaweed_01"
-anims/Seaweed_01 = SubResource( 10 )
+anims/Seaweed_01 = SubResource( 2 )
 
 [node name="Reef_02" type="Sprite" parent="."]
 position = Vector2( 518.967, 299.559 )
@@ -297,7 +293,7 @@ region_rect = Rect2( 10, -20, 550, 700 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Reef_01"]
 autoplay = "Reef_01"
 method_call_mode = 1
-anims/Reef_01 = SubResource( 1 )
+anims/Reef_01 = SubResource( 3 )
 
 [node name="BubblesOrigin" type="Node2D" parent="Reef_01"]
 position = Vector2( -309.255, 239.152 )
@@ -312,7 +308,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Seaweed_01"]
 autoplay = "Seaweed_01"
-anims/Seaweed_01 = SubResource( 3 )
+anims/Seaweed_01 = SubResource( 4 )
 
 [node name="Seaweed_07" type="Sprite" parent="."]
 position = Vector2( 787.834, 530.969 )
@@ -324,7 +320,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Seaweed_07"]
 autoplay = "Seaweed_01"
-anims/Seaweed_01 = SubResource( 4 )
+anims/Seaweed_01 = SubResource( 5 )
 
 [node name="Seaweed_02" type="Sprite" parent="."]
 position = Vector2( 7.63103, 372.928 )
@@ -336,7 +332,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Seaweed_02"]
 autoplay = "Seaweed_01"
-anims/Seaweed_01 = SubResource( 5 )
+anims/Seaweed_01 = SubResource( 6 )
 
 [node name="Seaweed_05" type="Sprite" parent="."]
 position = Vector2( -99.3746, 388.82 )
@@ -348,7 +344,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Seaweed_05"]
 autoplay = "Seaweed_01"
-anims/Seaweed_01 = SubResource( 6 )
+anims/Seaweed_01 = SubResource( 7 )
 
 [node name="Seaweed_03" type="Sprite" parent="."]
 position = Vector2( 613, 566.612 )
@@ -359,7 +355,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Seaweed_03"]
 autoplay = "Seaweed_01"
-anims/Seaweed_01 = SubResource( 7 )
+anims/Seaweed_01 = SubResource( 8 )
 
 [node name="Seaweed_06" type="Sprite" parent="."]
 position = Vector2( 276.091, 579.325 )
@@ -370,7 +366,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Seaweed_06"]
 autoplay = "Seaweed_01"
-anims/Seaweed_01 = SubResource( 8 )
+anims/Seaweed_01 = SubResource( 9 )
 
 [node name="BubblesOrigin3" type="Node2D" parent="."]
 position = Vector2( 857.521, 526.716 )
@@ -385,4 +381,11 @@ frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Reef_05"]
 autoplay = "Reed_05"
-anims/Reed_05 = SubResource( 9 )
+anims/Reed_05 = SubResource( 10 )
+
+[node name="Reef_04" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.364706 )
+material = ExtResource( 10 )
+position = Vector2( 504.649, 298.824 )
+scale = Vector2( 0.567629, 0.575674 )
+texture = ExtResource( 3 )
