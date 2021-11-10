@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ReefTest_001.png-cf7c6ee990ff5166119c336aec88acc9.stex"
+path="res://.import/Background2D_001.png-4c8cb40f1c3edc8e8afc081753833c04.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ReefTest/ReefTest_001.png"
-dest_files=[ "res://.import/ReefTest_001.png-cf7c6ee990ff5166119c336aec88acc9.stex" ]
+source_file="res://Sprites/Reef/Background2D_001.png"
+dest_files=[ "res://.import/Background2D_001.png-4c8cb40f1c3edc8e8afc081753833c04.stex" ]
 
 [params]
 
