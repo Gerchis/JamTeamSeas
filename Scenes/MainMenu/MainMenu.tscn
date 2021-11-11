@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Sprites/Reef/SpriteSheetAnimationReefCoral_002.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Reef/NoAnimationReef_002.png" type="Texture" id=2]
@@ -9,9 +9,11 @@
 [ext_resource path="res://Sprites/Reef/2DReefCoral_003.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/Seaweed/AnimationSeaWeed_003.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Seaweed/AnimationSeaWeed_002.png" type="Texture" id=9]
-[ext_resource path="res://shader/Distortion.tres" type="Material" id=10]
+[ext_resource path="res://shader/WaterBackground.tres" type="Material" id=10]
 [ext_resource path="res://Sprites/Title/TitleSpriteSheet_001.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/LightSea/LigthSea_001.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Turtle/IdleSpriteSheetTurtle_001.png" type="Texture" id=13]
+[ext_resource path="res://shader/WaterDistortion.tres" type="Material" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Seaweed_01"
@@ -100,19 +102,20 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-length = 2.0
+resource_name = "Idle"
+length = 1.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3 ]
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -196,6 +199,22 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=10]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=11]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -210,11 +229,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2 ]
 }
-
-[sub_resource type="AtlasTexture" id=11]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 1254, 244 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
@@ -236,9 +250,19 @@ flags = 4
 atlas = ExtResource( 11 )
 region = Rect2( 0, 976, 1254, 244 )
 
-[sub_resource type="SpriteFrames" id=16]
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 732, 1254, 244 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 488, 1254, 244 )
+
+[sub_resource type="SpriteFrames" id=18]
 animations = [ {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -334,6 +358,27 @@ anims/Reef_01 = SubResource( 3 )
 position = Vector2( -309.255, 239.152 )
 script = ExtResource( 5 )
 
+[node name="WaterEffect_01" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.196078 )
+material = ExtResource( 10 )
+position = Vector2( 517.377, 307.309 )
+scale = Vector2( 0.567629, 0.575674 )
+texture = ExtResource( 3 )
+
+[node name="Turtle" type="Sprite" parent="."]
+position = Vector2( 520.817, 294.48 )
+scale = Vector2( 0.276079, 0.276079 )
+texture = ExtResource( 13 )
+hframes = 4
+vframes = 2
+frame = 2
+region_enabled = true
+region_rect = Rect2( -20, -37, 2760, 757 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Turtle"]
+autoplay = "Idle"
+anims/Idle = SubResource( 4 )
+
 [node name="Seaweed_01" type="Sprite" parent="."]
 position = Vector2( 381, 524.612 )
 scale = Vector2( 0.402985, 0.402985 )
@@ -343,7 +388,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Seaweed_01"]
 autoplay = "Seaweed_01"
-anims/Seaweed_01 = SubResource( 4 )
+anims/Seaweed_01 = SubResource( 5 )
 
 [node name="Seaweed_07" type="Sprite" parent="."]
 position = Vector2( 787.834, 530.969 )
@@ -355,7 +400,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Seaweed_07"]
 autoplay = "Seaweed_01"
-anims/Seaweed_01 = SubResource( 5 )
+anims/Seaweed_01 = SubResource( 6 )
 
 [node name="Seaweed_02" type="Sprite" parent="."]
 position = Vector2( 7.63103, 372.928 )
@@ -367,7 +412,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Seaweed_02"]
 autoplay = "Seaweed_01"
-anims/Seaweed_01 = SubResource( 6 )
+anims/Seaweed_01 = SubResource( 7 )
 
 [node name="Seaweed_05" type="Sprite" parent="."]
 position = Vector2( -99.3746, 388.82 )
@@ -379,7 +424,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Seaweed_05"]
 autoplay = "Seaweed_01"
-anims/Seaweed_01 = SubResource( 7 )
+anims/Seaweed_01 = SubResource( 8 )
 
 [node name="Seaweed_03" type="Sprite" parent="."]
 position = Vector2( 613, 566.612 )
@@ -390,7 +435,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Seaweed_03"]
 autoplay = "Seaweed_01"
-anims/Seaweed_01 = SubResource( 8 )
+anims/Seaweed_01 = SubResource( 9 )
 
 [node name="Seaweed_06" type="Sprite" parent="."]
 position = Vector2( 276.091, 579.325 )
@@ -401,7 +446,7 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Seaweed_06"]
 autoplay = "Seaweed_01"
-anims/Seaweed_01 = SubResource( 9 )
+anims/Seaweed_01 = SubResource( 10 )
 
 [node name="BubblesOrigin3" type="Node2D" parent="."]
 position = Vector2( 857.521, 526.716 )
@@ -416,23 +461,21 @@ frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Reef_05"]
 autoplay = "Reed_05"
-anims/Reed_05 = SubResource( 10 )
-
-[node name="Reef_04" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.196078 )
-material = ExtResource( 10 )
-position = Vector2( 517.377, 307.309 )
-scale = Vector2( 0.567629, 0.575674 )
-texture = ExtResource( 3 )
+anims/Reed_05 = SubResource( 11 )
 
 [node name="Title_01" type="AnimatedSprite" parent="."]
 position = Vector2( 528.916, 138.593 )
 scale = Vector2( 0.4, 0.4 )
-frames = SubResource( 16 )
-frame = 1
+frames = SubResource( 18 )
 playing = true
 
+[node name="WaterEffect_02" type="Sprite" parent="."]
+material = ExtResource( 14 )
+position = Vector2( 517.377, 306.453 )
+scale = Vector2( 0.567629, 0.574089 )
+texture = ExtResource( 3 )
+
 [node name="LigthSea_001" type="Sprite" parent="."]
-position = Vector2( 569.089, 325.395 )
+position = Vector2( 559.201, 325.395 )
 scale = Vector2( 0.610417, 0.62963 )
 texture = ExtResource( 12 )

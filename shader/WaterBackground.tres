@@ -10,10 +10,10 @@ uniform float speed;
 
 void fragment(){
 	
-	float distortion = texture(noise, UV*distortion_scale + TIME * speed).x * intensity;
+	float distortion = texture(noise, UV *distortion_scale + TIME * speed).x * intensity;
 	distortion -= 0.5;
 	
-	vec2 screenuv = vec2(UV.x - distortion, UV.y);
+	vec2 screenuv = vec2(UV.x - distortion, UV.y + distortion);
 	
 	COLOR = texture(TEXTURE, screenuv);
 }"
