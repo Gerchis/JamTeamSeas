@@ -117,6 +117,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 520.817, 211.48 ), Vector2( 520.817, 220 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 length = 2.0
@@ -366,17 +378,18 @@ scale = Vector2( 0.567629, 0.575674 )
 texture = ExtResource( 3 )
 
 [node name="Turtle" type="Sprite" parent="."]
-position = Vector2( 520.817, 211.48 )
+position = Vector2( 520.817, 220 )
 scale = Vector2( 0.276079, 0.276079 )
 texture = ExtResource( 13 )
 hframes = 4
 vframes = 2
-frame = 2
+frame = 3
 region_enabled = true
 region_rect = Rect2( -20, -37, 2760, 757 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Turtle"]
 autoplay = "Idle"
+playback_speed = 0.8
 anims/Idle = SubResource( 4 )
 
 [node name="Seaweed_01" type="Sprite" parent="."]
@@ -463,12 +476,6 @@ frame = 2
 autoplay = "Reed_05"
 anims/Reed_05 = SubResource( 11 )
 
-[node name="Title_01" type="AnimatedSprite" parent="."]
-position = Vector2( 500.857, 90.7563 )
-scale = Vector2( 0.4, 0.4 )
-frames = SubResource( 18 )
-frame = 2
-
 [node name="WaterEffect_02" type="Sprite" parent="."]
 material = ExtResource( 14 )
 position = Vector2( 517.377, 306.453 )
@@ -479,3 +486,9 @@ texture = ExtResource( 3 )
 position = Vector2( 559.201, 325.395 )
 scale = Vector2( 0.610417, 0.62963 )
 texture = ExtResource( 12 )
+
+[node name="Title_01" type="AnimatedSprite" parent="."]
+position = Vector2( 500.857, 90.7563 )
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 18 )
+frame = 2

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BtnVolumeOnOff_001.png-726c55d296262d5cabd0e8c414e40cd7.stex"
+path="res://.import/BtnVolumeOnOff_001.png-bf2f38cbf5733d8e0c30048aaeec831c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BtnVolumeOnOff_001.png"
-dest_files=[ "res://.import/BtnVolumeOnOff_001.png-726c55d296262d5cabd0e8c414e40cd7.stex" ]
+source_file="res://Sprites/ButtonAudio/BtnVolumeOnOff_001.png"
+dest_files=[ "res://.import/BtnVolumeOnOff_001.png-bf2f38cbf5733d8e0c30048aaeec831c.stex" ]
 
 [params]
 

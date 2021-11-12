@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BtnStrat_001.png-abd90e4f65d5902bbbacc62679356e55.stex"
+path="res://.import/BtnStrat_001.png-9fd11558e0233ff6a32c22f281591ff7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BtnStrat_001.png"
-dest_files=[ "res://.import/BtnStrat_001.png-abd90e4f65d5902bbbacc62679356e55.stex" ]
+source_file="res://Sprites/ButtonStart/BtnStrat_001.png"
+dest_files=[ "res://.import/BtnStrat_001.png-9fd11558e0233ff6a32c22f281591ff7.stex" ]
 
 [params]
 
