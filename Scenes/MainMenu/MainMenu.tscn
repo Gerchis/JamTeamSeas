@@ -366,7 +366,7 @@ scale = Vector2( 0.567629, 0.575674 )
 texture = ExtResource( 3 )
 
 [node name="Turtle" type="Sprite" parent="."]
-position = Vector2( 520.817, 294.48 )
+position = Vector2( 520.817, 211.48 )
 scale = Vector2( 0.276079, 0.276079 )
 texture = ExtResource( 13 )
 hframes = 4
@@ -464,10 +464,10 @@ autoplay = "Reed_05"
 anims/Reed_05 = SubResource( 11 )
 
 [node name="Title_01" type="AnimatedSprite" parent="."]
-position = Vector2( 528.916, 138.593 )
+position = Vector2( 500.857, 90.7563 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 18 )
-playing = true
+frame = 2
 
 [node name="WaterEffect_02" type="Sprite" parent="."]
 material = ExtResource( 14 )
