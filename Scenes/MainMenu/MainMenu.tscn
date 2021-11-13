@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Sprites/Reef/SpriteSheetAnimationReefCoral_002.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Reef/NoAnimationReef_002.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Sprites/ButtonStart/ButtonsSeaUnderwater_Start.png" type="Texture" id=15]
 [ext_resource path="res://Sprites/ButtonStart/ButtonsSeaUnderwater_Selec.png" type="Texture" id=16]
 [ext_resource path="res://Sprites/ButtonStart/ButtonsSeaUnderwater_StartSelec.png" type="Texture" id=17]
+[ext_resource path="res://Scripts/MainMenu/MainMenu.gd" type="Script" id=18]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Seaweed_01"
@@ -245,7 +246,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="SpriteFrames" id=22]
+[sub_resource type="SpriteFrames" id=12]
 animations = [ {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
@@ -253,27 +254,29 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="StyleBoxTexture" id=12]
+[sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 17 )
 region_rect = Rect2( 0, 0, 545, 223 )
 
-[sub_resource type="StyleBoxTexture" id=13]
+[sub_resource type="StyleBoxTexture" id=14]
 texture = ExtResource( 16 )
 region_rect = Rect2( 0, 0, 545, 223 )
 
-[sub_resource type="StyleBoxFlat" id=14]
+[sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
-[sub_resource type="StyleBoxTexture" id=15]
+[sub_resource type="StyleBoxTexture" id=16]
 texture = ExtResource( 15 )
 region_rect = Rect2( 0, 0, 545, 223 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+game_scene = "res://Scenes/GameScene/GameScene.tscn"
 
 [node name="Reef_03" type="Sprite" parent="."]
 position = Vector2( 512.213, 297.43 )
@@ -478,7 +481,7 @@ texture = ExtResource( 12 )
 [node name="Title_01" type="AnimatedSprite" parent="."]
 position = Vector2( 428.818, 326.103 )
 scale = Vector2( 0.2, 0.2 )
-frames = SubResource( 22 )
+frames = SubResource( 12 )
 
 [node name="Button" type="Button" parent="."]
 anchor_left = 0.5
@@ -489,10 +492,12 @@ margin_left = -5.87158
 margin_top = 35.2209
 margin_right = 157.128
 margin_bottom = 104.221
-custom_styles/hover = SubResource( 12 )
-custom_styles/pressed = SubResource( 13 )
-custom_styles/focus = SubResource( 14 )
-custom_styles/normal = SubResource( 15 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/normal = SubResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
