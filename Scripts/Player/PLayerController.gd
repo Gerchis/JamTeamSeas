@@ -29,5 +29,6 @@ func _physics_process(delta: float) -> void:
 	
 	actual_velocity = move_and_slide(actual_velocity)
 	
-	rotation = lerp_angle(rotation, _target_rotation, delta * rotation_speed)
+	if _movement_direction != Vector2.ZERO:
+		rotation = lerp_angle(rotation, _target_rotation, delta * rotation_speed)
 

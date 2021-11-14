@@ -6,3 +6,9 @@
 
 [node name="PLayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 411.748, 300.074 )
+
+[node name="Camera2D" type="Camera2D" parent="PLayer"]
+current = true
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 7.0
