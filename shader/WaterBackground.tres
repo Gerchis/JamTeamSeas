@@ -27,6 +27,6 @@ noise = SubResource( 2 )
 [resource]
 shader = SubResource( 1 )
 shader_param/distortion_scale = Vector2( 1, 1 )
-shader_param/intensity = 1.0
-shader_param/speed = 0.1
+shader_param/intensity = 0.344
+shader_param/speed = 0.065
 shader_param/noise = SubResource( 3 )

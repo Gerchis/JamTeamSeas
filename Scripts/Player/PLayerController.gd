@@ -7,6 +7,9 @@ export var rotation_speed := 5.0
 var actual_velocity := Vector2.ZERO
 var actual_rotation := 0.0
 
+onready var animation := $AnimationPlayer
+onready var particles := $Particles2D
+
 func _physics_process(delta: float) -> void:
 	var _movement_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
@@ -31,4 +34,10 @@ func _physics_process(delta: float) -> void:
 	
 	if _movement_direction != Vector2.ZERO:
 		rotation = lerp_angle(rotation, _target_rotation, delta * rotation_speed)
+		
+		animation.set_current_animation("Walk")
+		particles.emitting = true
+	else:
+		animation.set_current_animation("Idle")
+		particles.emitting = false
 
