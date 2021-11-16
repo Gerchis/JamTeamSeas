@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/GameScene/PLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Background/fodoUnderwaterPrueba_01.png" type="Texture" id=2]
@@ -10,28 +10,35 @@
 [ext_resource path="res://shader/WaterDistortion.tres" type="Material" id=8]
 [ext_resource path="res://Sprites/Background/_0005_background_001.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/Background/_0004_reefCoral_002.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Asset2DFishingNet.png" type="Texture" id=11]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4007.22, 100.945 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3147.26, 63.9883 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 2078.02, 57.6765 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 632.545, 70.0212 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 932.487, 79.323 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 705.371, 78.4385 )
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 235.276
 height = 1854.14
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 577.693, 65.203 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 612.9, 90.5937 )
 
 [node name="GameScene" type="Node2D"]
 
@@ -41,10 +48,11 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 9 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="AbissalSea"]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AbissalSea/StaticBody2D"]
 position = Vector2( 0, -1166.39 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="BackgroundDist" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.054902 )
@@ -64,30 +72,31 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 6 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="SeaBottom"]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SeaBottom/StaticBody2D"]
 position = Vector2( -289.483, 1115.83 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SeaBottom/StaticBody2D"]
 position = Vector2( 113.498, 1018.13 )
 rotation = -0.0436332
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="SeaBottom/StaticBody2D"]
 position = Vector2( 2679.59, 822.879 )
 rotation = -0.226893
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="SeaBottom/StaticBody2D"]
 position = Vector2( 3264.39, 366.299 )
 rotation = -0.879646
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="SeaBottom/StaticBody2D"]
 position = Vector2( 3872.51, -396.866 )
 rotation = -1.57079
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="LimitLeft" type="Sprite" parent="."]
 position = Vector2( 282.861, 426.536 )
@@ -95,11 +104,12 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="LimitLeft"]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LimitLeft/StaticBody2D"]
 position = Vector2( -3601.93, 0 )
 rotation = -0.261799
-shape = SubResource( 1 )
+shape = SubResource( 7 )
 
 [node name="PLayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 411.748, 300.074 )
@@ -125,11 +135,34 @@ position = Vector2( 282.861, 426.536 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
+[node name="FishingNet" type="Node2D" parent="."]
+position = Vector2( 0, -1144 )
+rotation = -1.57079
+
+[node name="FishingNetSprite" type="Sprite" parent="FishingNet"]
+position = Vector2( 20.1977, -1093.22 )
+scale = Vector2( 1.085, 0.542 )
+texture = ExtResource( 11 )
+
+[node name="NetTrigger" type="Area2D" parent="FishingNet"]
+position = Vector2( -1570.54, -543.992 )
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingNet/NetTrigger"]
+shape = SubResource( 8 )
+
+[node name="KinematicBody2D" type="StaticBody2D" parent="FishingNet"]
+position = Vector2( -426.538, -977.838 )
+rotation = 0.237365
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingNet/KinematicBody2D"]
+rotation = -0.0872665
+z_as_relative = false
+shape = SubResource( 9 )
+
 [node name="DistortionEffect" type="Sprite" parent="."]
 material = ExtResource( 8 )
 position = Vector2( 282.861, 426.536 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 2250.36, 966.536 )

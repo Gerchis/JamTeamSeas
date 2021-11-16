@@ -55,6 +55,12 @@ interaction={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Environment"
+2d_physics/layer_3="Net"
+
 [physics]
 
 common/enable_pause_aware_picking=true
