@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Player/PLayerController.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Turtle/IdleSpriteSheetTurtle_001.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Turtle/WalkSpriteSheetTurtle_001.png" type="Texture" id=3]
+[ext_resource path="res://WalkAnimationTurtle_002.png" type="Texture" id=2]
+[ext_resource path="res://IdleAnimationTurtle_02.png" type="Texture" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -50,7 +50,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 2 ) ]
+"values": [ ExtResource( 3 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Graphics:frame")
@@ -78,7 +78,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 3 ) ]
+"values": [ ExtResource( 2 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Graphics:frame")
@@ -110,7 +110,7 @@ process_material = SubResource( 6 )
 [node name="Graphics" type="Sprite" parent="."]
 position = Vector2( 8.49487, 5.66324 )
 scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 hframes = 4
 vframes = 2
 region_enabled = true
@@ -125,3 +125,9 @@ shape = SubResource( 7 )
 autoplay = "Idle"
 anims/Idle = SubResource( 8 )
 anims/Walk = SubResource( 9 )
+
+[node name="TimerRun" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="TimerRun" to="." method="_on_TimerRun_timeout"]
