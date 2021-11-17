@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Player/PLayerController.gd" type="Script" id=1]
-[ext_resource path="res://WalkAnimationTurtle_002.png" type="Texture" id=2]
+[ext_resource path="res://WalkAnimationTurtle_003.png" type="Texture" id=2]
 [ext_resource path="res://IdleAnimationTurtle_02.png" type="Texture" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -113,6 +113,7 @@ scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 2 )
 hframes = 4
 vframes = 2
+frame = 7
 region_enabled = true
 region_rect = Rect2( -20, -37, 2760, 757 )
 
