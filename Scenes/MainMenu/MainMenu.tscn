@@ -369,12 +369,12 @@ scale = Vector2( 0.567629, 0.575674 )
 texture = ExtResource( 3 )
 
 [node name="Turtle" type="Sprite" parent="."]
-position = Vector2( 520.817, 220 )
+position = Vector2( 520.817, 211.48 )
 scale = Vector2( 0.276079, 0.276079 )
 texture = ExtResource( 13 )
 hframes = 4
 vframes = 2
-frame = 3
+frame = 6
 region_enabled = true
 region_rect = Rect2( -20, -37, 2760, 757 )
 
