@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Scenes/GameScene/PLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Background/fodoUnderwaterPrueba_01.png" type="Texture" id=2]
@@ -27,6 +27,13 @@
 [ext_resource path="res://_0006_Break_background_001.png" type="Texture" id=25]
 [ext_resource path="res://_0005_Break_reefCoral_002.png" type="Texture" id=26]
 [ext_resource path="res://_0003_Break_seaWeed_001.png" type="Texture" id=27]
+[ext_resource path="res://FishPlastic_011.png" type="Texture" id=28]
+[ext_resource path="res://FishPlastic_001.png" type="Texture" id=29]
+[ext_resource path="res://FishPlastic_002.png" type="Texture" id=30]
+[ext_resource path="res://FishPlastic_012.png" type="Texture" id=31]
+[ext_resource path="res://FishPlastic_007.png" type="Texture" id=32]
+[ext_resource path="res://Scenes/GameScene/TrappedFish_01.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Scenes/GameScene/Fish_01.tscn" type="PackedScene" id=34]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4007.22, 100.945 )
@@ -368,6 +375,7 @@ script = ExtResource( 18 )
 wb_shader = ExtResource( 17 )
 sprite_list = [ NodePath("AbissalSea"), NodePath("ReefBackground"), NodePath("SeaBottom"), NodePath("LimitLeft"), NodePath("SeaWeed"), NodePath("Shadow") ]
 new_sprites = [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 24 ) ]
+hiddenFish = [ NodePath("TrappedFish") ]
 
 [node name="AbissalSea" type="Sprite" parent="."]
 material = ExtResource( 17 )
@@ -441,6 +449,41 @@ collision_layer = 2
 position = Vector2( -3601.93, 0 )
 rotation = -0.261799
 shape = SubResource( 7 )
+
+[node name="Fish_01" parent="." instance=ExtResource( 34 )]
+position = Vector2( 1131.75, 297.449 )
+turn_time = 3.0
+speed = 200.0
+init_turn = true
+
+[node name="TrappedFish" parent="." instance=ExtResource( 33 )]
+position = Vector2( 921.802, 426.536 )
+scale = Vector2( 0.0836842, 0.0836842 )
+
+[node name="FishPlastic_001" type="Sprite" parent="."]
+position = Vector2( -238.294, 328.035 )
+scale = Vector2( 0.0836842, 0.0836842 )
+texture = ExtResource( 29 )
+
+[node name="FishPlastic_012" type="Sprite" parent="."]
+position = Vector2( 282.861, 697.768 )
+scale = Vector2( 0.084, 0.084 )
+texture = ExtResource( 31 )
+
+[node name="FishPlastic_002" type="Sprite" parent="."]
+position = Vector2( 1874.69, 164.49 )
+scale = Vector2( 0.084, 0.084 )
+texture = ExtResource( 30 )
+
+[node name="FishPlastic_011" type="Sprite" parent="."]
+position = Vector2( 371.23, 0 )
+scale = Vector2( 0.084, 0.084 )
+texture = ExtResource( 28 )
+
+[node name="FishPlastic_007" type="Sprite" parent="."]
+position = Vector2( -1093.28, 673.45 )
+scale = Vector2( 0.084, 0.084 )
+texture = ExtResource( 32 )
 
 [node name="PLayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1131.75, 524.074 )
