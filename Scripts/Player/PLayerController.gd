@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var speed := 500.0
 export var accel := 10.0
 export var rotation_speed := 5.0
+export(NodePath) var run_anim
 
 var actual_velocity := Vector2.ZERO
 var actual_rotation := 0.0
@@ -63,3 +64,4 @@ func _on_FishingNet_stop_movement() -> void:
 
 func _on_TimerRun_timeout() -> void:
 	is_running = true
+	get_node(run_anim).play("Start")

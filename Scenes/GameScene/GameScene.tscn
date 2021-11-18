@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Scenes/GameScene/PLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Background/fodoUnderwaterPrueba_01.png" type="Texture" id=2]
@@ -19,6 +19,14 @@
 [ext_resource path="res://shader/BlackWhite.tres" type="Material" id=17]
 [ext_resource path="res://Scripts/GameAssets/GameScene.gd" type="Script" id=18]
 [ext_resource path="res://Circle.png" type="Texture" id=19]
+[ext_resource path="res://2DImage_WASD_Keys.png" type="Texture" id=20]
+[ext_resource path="res://2D_RUN.png" type="Texture" id=21]
+[ext_resource path="res://_0004_Break_beachCoral_001.png" type="Texture" id=22]
+[ext_resource path="res://_0002_Break_reefCoral_001.png" type="Texture" id=23]
+[ext_resource path="res://_0001_Break_shadow1rsPlane_001.png" type="Texture" id=24]
+[ext_resource path="res://_0006_Break_background_001.png" type="Texture" id=25]
+[ext_resource path="res://_0005_Break_reefCoral_002.png" type="Texture" id=26]
+[ext_resource path="res://_0003_Break_seaWeed_001.png" type="Texture" id=27]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4007.22, 100.945 )
@@ -45,7 +53,7 @@ height = 1854.14
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 612.9, 90.5937 )
 
-[sub_resource type="CanvasItemMaterial" id=21]
+[sub_resource type="CanvasItemMaterial" id=9]
 particles_animation = true
 particles_anim_h_frames = 5
 particles_anim_v_frames = 2
@@ -81,15 +89,15 @@ color_ramp = SubResource( 13 )
 anim_speed = 1.0
 anim_speed_random = 0.4
 
-[sub_resource type="CanvasItemMaterial" id=9]
+[sub_resource type="CanvasItemMaterial" id=15]
 
-[sub_resource type="Curve" id=22]
+[sub_resource type="Curve" id=16]
 _data = [ Vector2( 0, 0.485227 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=23]
-curve = SubResource( 22 )
+[sub_resource type="CurveTexture" id=17]
+curve = SubResource( 16 )
 
-[sub_resource type="ParticlesMaterial" id=15]
+[sub_resource type="ParticlesMaterial" id=18]
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
@@ -103,13 +111,13 @@ angle = 360.0
 angle_random = 1.0
 scale = 4.0
 scale_random = 0.5
-scale_curve = SubResource( 23 )
+scale_curve = SubResource( 17 )
 anim_speed_random = 0.4
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 577.693, 65.203 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=20]
 length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("FishingNetSprite:position")
@@ -198,7 +206,7 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=21]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("FishingNetSprite:position")
@@ -249,7 +257,7 @@ tracks/3/keys = {
 "values": [ -120.0, -120.0, -74.9999 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=22]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -264,8 +272,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=20]
-resource_name = "FadeOut"
+[sub_resource type="Animation" id=23]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -308,10 +315,59 @@ tracks/2/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=24]
+resource_name = "Start"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 3.5, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "End"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "Start"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="GameScene" type="Node2D"]
 script = ExtResource( 18 )
 wb_shader = ExtResource( 17 )
 sprite_list = [ NodePath("AbissalSea"), NodePath("ReefBackground"), NodePath("SeaBottom"), NodePath("LimitLeft"), NodePath("SeaWeed"), NodePath("Shadow") ]
+new_sprites = [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 24 ) ]
 
 [node name="AbissalSea" type="Sprite" parent="."]
 material = ExtResource( 17 )
@@ -388,6 +444,7 @@ shape = SubResource( 7 )
 
 [node name="PLayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1131.75, 524.074 )
+run_anim = NodePath("../UI/Run/AnimationPlayer")
 
 [node name="Camera2D" type="Camera2D" parent="PLayer"]
 current = true
@@ -416,6 +473,7 @@ texture = ExtResource( 3 )
 position = Vector2( 0, -1144 )
 rotation = -1.5708
 script = ExtResource( 12 )
+run_anim = NodePath("../UI/Run/AnimationPlayer")
 
 [node name="FishingNetSprite" type="Sprite" parent="FishingNet"]
 position = Vector2( -323.939, -1533.71 )
@@ -440,7 +498,7 @@ z_as_relative = false
 shape = SubResource( 8 )
 
 [node name="Particles2D" type="Particles2D" parent="FishingNet/FishingNetSprite"]
-material = SubResource( 21 )
+material = SubResource( 9 )
 position = Vector2( 491.614, 416.069 )
 emitting = false
 amount = 20
@@ -451,7 +509,7 @@ texture = ExtResource( 15 )
 
 [node name="Particles2Burst" type="Particles2D" parent="FishingNet/FishingNetSprite"]
 modulate = Color( 0.356863, 0.298039, 0, 0.388235 )
-material = SubResource( 9 )
+material = SubResource( 15 )
 position = Vector2( 491.614, 416.069 )
 emitting = false
 amount = 200
@@ -461,7 +519,7 @@ explosiveness = 1.0
 visibility_rect = Rect2( -10000, -10000, 20000, 20000 )
 local_coords = false
 draw_order = 1
-process_material = SubResource( 15 )
+process_material = SubResource( 18 )
 texture = ExtResource( 19 )
 
 [node name="NetTrigger" type="Area2D" parent="FishingNet"]
@@ -470,11 +528,11 @@ monitorable = false
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishingNet/NetTrigger"]
-shape = SubResource( 16 )
+shape = SubResource( 19 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FishingNet"]
-anims/Pos_Net = SubResource( 17 )
-anims/Pre_Net = SubResource( 18 )
+anims/Pos_Net = SubResource( 20 )
+anims/Pre_Net = SubResource( 21 )
 
 [node name="DistortionEffect" type="Sprite" parent="."]
 material = ExtResource( 8 )
@@ -496,7 +554,7 @@ __meta__ = {
 game_scene = "res://Scenes/GameScene/GameScene.tscn"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/FadeOut"]
-anims/FadeOut = SubResource( 19 )
+anims/FadeOut = SubResource( 22 )
 
 [node name="SmokeFadeOut" type="ColorRect" parent="UI"]
 modulate = Color( 1, 1, 1, 0 )
@@ -509,7 +567,27 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/SmokeFadeOut"]
-anims/FadeOut = SubResource( 20 )
+anims/FadeOut = SubResource( 23 )
+
+[node name="Keys" type="Sprite" parent="UI"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 497.821, 82.5799 )
+scale = Vector2( 0.154262, 0.154262 )
+texture = ExtResource( 20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Keys"]
+autoplay = "Start"
+anims/Start = SubResource( 24 )
+
+[node name="Run" type="Sprite" parent="UI"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 503.276, 162.629 )
+scale = Vector2( 0.244077, 0.243405 )
+texture = ExtResource( 21 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Run"]
+anims/End = SubResource( 25 )
+anims/Start = SubResource( 26 )
 
 [connection signal="start_running" from="PLayer" to="FishingNet" method="_on_PLayer_start_running"]
 [connection signal="stop_movement" from="FishingNet" to="PLayer" method="_on_FishingNet_stop_movement"]
