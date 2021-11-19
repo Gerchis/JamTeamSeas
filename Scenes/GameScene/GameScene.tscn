@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://Scenes/GameScene/PLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Background/fodoUnderwaterPrueba_01.png" type="Texture" id=2]
@@ -33,7 +33,10 @@
 [ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_012.png" type="Texture" id=31]
 [ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_007.png" type="Texture" id=32]
 [ext_resource path="res://Scenes/GameScene/TrappedFish_01.tscn" type="PackedScene" id=33]
+[ext_resource path="res://GraberSlider_001.png" type="Texture" id=34]
 [ext_resource path="res://Scripts/UI/SliderMinigame.gd" type="Script" id=35]
+[ext_resource path="res://OutlineSlider_001.png" type="Texture" id=36]
+[ext_resource path="res://InsideSlider_001.png" type="Texture" id=37]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4007.22, 100.945 )
@@ -370,6 +373,12 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="StyleBoxTexture" id=27]
+texture = ExtResource( 37 )
+region_rect = Rect2( 0, 0, 840, 60 )
+
+[sub_resource type="StyleBoxTexture" id=28]
+
 [node name="GameScene" type="Node2D"]
 script = ExtResource( 18 )
 wb_shader = ExtResource( 17 )
@@ -624,20 +633,33 @@ texture = ExtResource( 21 )
 anims/End = SubResource( 25 )
 anims/Start = SubResource( 26 )
 
-[node name="HSlider" type="HSlider" parent="UI"]
-margin_left = 184.0
-margin_top = 57.0
-margin_right = 421.0
-margin_bottom = 97.0
+[node name="BG_Slider" type="Sprite" parent="UI"]
+position = Vector2( 70.8931, 24.318 )
+texture = ExtResource( 36 )
+centered = false
+script = ExtResource( 35 )
+
+[node name="HSlider" type="HSlider" parent="UI/BG_Slider"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -420.0
+margin_top = -60.0
+margin_right = 420.0
+margin_bottom = 60.0
+custom_icons/grabber_disabled = ExtResource( 34 )
+custom_icons/grabber_highlight = ExtResource( 34 )
+custom_icons/grabber = ExtResource( 34 )
+custom_styles/slider = SubResource( 27 )
+custom_styles/grabber_area = SubResource( 28 )
 editable = false
 scrollable = false
-script = ExtResource( 35 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-speed = 50.0
 
-[connection signal="init_minigame" from="TrappedFish" to="UI/HSlider" method="_on_TrappedFish_init_minigame"]
+[connection signal="init_minigame" from="TrappedFish" to="UI/BG_Slider" method="_on_TrappedFish_init_minigame"]
 [connection signal="start_running" from="PLayer" to="FishingNet" method="_on_PLayer_start_running"]
 [connection signal="stop_movement" from="FishingNet" to="PLayer" method="_on_FishingNet_stop_movement"]
 [connection signal="body_entered" from="FishingNet/FishingNetSprite/DeadTrigger" to="UI/FadeOut" method="_on_DeadTrigger_body_entered"]
