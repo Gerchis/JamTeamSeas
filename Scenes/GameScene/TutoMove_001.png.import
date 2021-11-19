@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MoveText.png-b66fc4b0ab8ab9bb2b20599ac3e8a9fa.stex"
+path="res://.import/TutoMove_001.png-d5ec0253d730b1c0700cefc2d5cbf31d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MoveText.png"
-dest_files=[ "res://.import/MoveText.png-b66fc4b0ab8ab9bb2b20599ac3e8a9fa.stex" ]
+source_file="res://Scenes/GameScene/TutoMove_001.png"
+dest_files=[ "res://.import/TutoMove_001.png-d5ec0253d730b1c0700cefc2d5cbf31d.stex" ]
 
 [params]
 

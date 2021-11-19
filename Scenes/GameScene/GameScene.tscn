@@ -19,7 +19,7 @@
 [ext_resource path="res://shader/BlackWhite.tres" type="Material" id=17]
 [ext_resource path="res://Scripts/GameAssets/GameScene.gd" type="Script" id=18]
 [ext_resource path="res://Circle.png" type="Texture" id=19]
-[ext_resource path="res://2DImage_WASD_Keys.png" type="Texture" id=20]
+[ext_resource path="res://TutoMove_001.png" type="Texture" id=20]
 [ext_resource path="res://2D_RUN.png" type="Texture" id=21]
 [ext_resource path="res://_0004_Break_beachCoral_001.png" type="Texture" id=22]
 [ext_resource path="res://_0002_Break_reefCoral_001.png" type="Texture" id=23]
@@ -486,7 +486,7 @@ scale = Vector2( 0.084, 0.084 )
 texture = ExtResource( 32 )
 
 [node name="PLayer" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1131.75, 524.074 )
+position = Vector2( 1130.75, 524.074 )
 run_anim = NodePath("../UI/Run/AnimationPlayer")
 
 [node name="Camera2D" type="Camera2D" parent="PLayer"]
@@ -613,9 +613,8 @@ __meta__ = {
 anims/FadeOut = SubResource( 23 )
 
 [node name="Keys" type="Sprite" parent="UI"]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 497.821, 82.5799 )
-scale = Vector2( 0.154262, 0.154262 )
+position = Vector2( 712.626, 300.265 )
+scale = Vector2( 0.195, 0.195 )
 texture = ExtResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Keys"]
@@ -624,7 +623,7 @@ anims/Start = SubResource( 24 )
 
 [node name="Run" type="Sprite" parent="UI"]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 503.276, 162.629 )
+position = Vector2( 711.226, 316.607 )
 scale = Vector2( 0.244077, 0.243405 )
 texture = ExtResource( 21 )
 
