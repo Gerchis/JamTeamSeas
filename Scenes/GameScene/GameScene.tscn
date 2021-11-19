@@ -33,7 +33,7 @@
 [ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_012.png" type="Texture" id=31]
 [ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_007.png" type="Texture" id=32]
 [ext_resource path="res://Scenes/GameScene/TrappedFish_01.tscn" type="PackedScene" id=33]
-[ext_resource path="res://Scenes/GameScene/Fish_01.tscn" type="PackedScene" id=34]
+[ext_resource path="res://Scripts/UI/SliderMinigame.gd" type="Script" id=35]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4007.22, 100.945 )
@@ -450,16 +450,6 @@ position = Vector2( -3601.93, 0 )
 rotation = -0.261799
 shape = SubResource( 7 )
 
-[node name="Fish_01" parent="." instance=ExtResource( 34 )]
-position = Vector2( 1131.75, 297.449 )
-turn_time = 3.0
-speed = 200.0
-init_turn = true
-
-[node name="TrappedFish" parent="." instance=ExtResource( 33 )]
-position = Vector2( 921.802, 426.536 )
-scale = Vector2( 0.0836842, 0.0836842 )
-
 [node name="FishPlastic_001" type="Sprite" parent="."]
 position = Vector2( -238.294, 328.035 )
 scale = Vector2( 0.0836842, 0.0836842 )
@@ -484,6 +474,9 @@ texture = ExtResource( 28 )
 position = Vector2( -1093.28, 673.45 )
 scale = Vector2( 0.084, 0.084 )
 texture = ExtResource( 32 )
+
+[node name="TrappedFish" parent="." instance=ExtResource( 33 )]
+position = Vector2( -189.632, 365.5 )
 
 [node name="PLayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1130.75, 524.074 )
@@ -631,6 +624,20 @@ texture = ExtResource( 21 )
 anims/End = SubResource( 25 )
 anims/Start = SubResource( 26 )
 
+[node name="HSlider" type="HSlider" parent="UI"]
+margin_left = 184.0
+margin_top = 57.0
+margin_right = 421.0
+margin_bottom = 97.0
+editable = false
+scrollable = false
+script = ExtResource( 35 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+speed = 50.0
+
+[connection signal="init_minigame" from="TrappedFish" to="UI/HSlider" method="_on_TrappedFish_init_minigame"]
 [connection signal="start_running" from="PLayer" to="FishingNet" method="_on_PLayer_start_running"]
 [connection signal="stop_movement" from="FishingNet" to="PLayer" method="_on_FishingNet_stop_movement"]
 [connection signal="body_entered" from="FishingNet/FishingNetSprite/DeadTrigger" to="UI/FadeOut" method="_on_DeadTrigger_body_entered"]
