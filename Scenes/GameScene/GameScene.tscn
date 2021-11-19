@@ -10,28 +10,28 @@
 [ext_resource path="res://shader/WaterDistortion.tres" type="Material" id=8]
 [ext_resource path="res://Sprites/Background/_0005_background_001.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/Background/_0004_reefCoral_002.png" type="Texture" id=10]
-[ext_resource path="res://FishNet_002.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Net/FishNet_002.png" type="Texture" id=11]
 [ext_resource path="res://Scripts/GameAssets/Net/FishingNet.gd" type="Script" id=12]
-[ext_resource path="res://FishNet_001.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Net/FishNet_001.png" type="Texture" id=13]
 [ext_resource path="res://Scripts/UI/FadeOut.gd" type="Script" id=14]
-[ext_resource path="res://SmokeEffect_001.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Smoke/SmokeEffect_001.png" type="Texture" id=15]
 [ext_resource path="res://Scripts/UI/SmokeFadeOut.gd" type="Script" id=16]
 [ext_resource path="res://shader/BlackWhite.tres" type="Material" id=17]
 [ext_resource path="res://Scripts/GameAssets/GameScene.gd" type="Script" id=18]
-[ext_resource path="res://Circle.png" type="Texture" id=19]
-[ext_resource path="res://TutoMove_001.png" type="Texture" id=20]
-[ext_resource path="res://2D_RUN.png" type="Texture" id=21]
-[ext_resource path="res://_0004_Break_beachCoral_001.png" type="Texture" id=22]
-[ext_resource path="res://_0002_Break_reefCoral_001.png" type="Texture" id=23]
-[ext_resource path="res://_0001_Break_shadow1rsPlane_001.png" type="Texture" id=24]
-[ext_resource path="res://_0006_Break_background_001.png" type="Texture" id=25]
-[ext_resource path="res://_0005_Break_reefCoral_002.png" type="Texture" id=26]
-[ext_resource path="res://_0003_Break_seaWeed_001.png" type="Texture" id=27]
-[ext_resource path="res://FishPlastic_011.png" type="Texture" id=28]
-[ext_resource path="res://FishPlastic_001.png" type="Texture" id=29]
-[ext_resource path="res://FishPlastic_002.png" type="Texture" id=30]
-[ext_resource path="res://FishPlastic_012.png" type="Texture" id=31]
-[ext_resource path="res://FishPlastic_007.png" type="Texture" id=32]
+[ext_resource path="res://Sprites/Smoke/Circle.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Texts/TutoMove_001.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Texts/2D_RUN.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/BreakOcean/_0004_Break_beachCoral_001.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/BreakOcean/_0002_Break_reefCoral_001.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/BreakOcean/_0001_Break_shadow1rsPlane_001.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/BreakOcean/_0006_Break_background_001.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/BreakOcean/_0005_Break_reefCoral_002.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/BreakOcean/_0003_Break_seaWeed_001.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_011.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_001.png" type="Texture" id=29]
+[ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_002.png" type="Texture" id=30]
+[ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_012.png" type="Texture" id=31]
+[ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_007.png" type="Texture" id=32]
 [ext_resource path="res://Scenes/GameScene/TrappedFish_01.tscn" type="PackedScene" id=33]
 [ext_resource path="res://Scenes/GameScene/Fish_01.tscn" type="PackedScene" id=34]
 
@@ -466,12 +466,12 @@ scale = Vector2( 0.0836842, 0.0836842 )
 texture = ExtResource( 29 )
 
 [node name="FishPlastic_012" type="Sprite" parent="."]
-position = Vector2( 282.861, 697.768 )
-scale = Vector2( 0.084, 0.084 )
+position = Vector2( 655.218, 864.929 )
+scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 31 )
 
 [node name="FishPlastic_002" type="Sprite" parent="."]
-position = Vector2( 1874.69, 164.49 )
+position = Vector2( 1874.69, -83.51 )
 scale = Vector2( 0.084, 0.084 )
 texture = ExtResource( 30 )
 

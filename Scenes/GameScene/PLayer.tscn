@@ -1,8 +1,9 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Player/PLayerController.gd" type="Script" id=1]
-[ext_resource path="res://WalkAnimationTurtle_003.png" type="Texture" id=2]
-[ext_resource path="res://IdleAnimationTurtle_02.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Turtle/WalkAnimationTurtle_003.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Turtle/IdleAnimationTurtle_02.png" type="Texture" id=3]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 
