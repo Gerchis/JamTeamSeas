@@ -12,13 +12,16 @@ export var min_win_value := 0.0
 export var max_win_value := 0.0
 export var max_rounds := 0
 export(Array, Texture) var key_textures
+export(NodePath) var fish_trapped_parent
 
 signal minigame_complete (_path)
 signal minigame_failed (_path)
 
 func _ready() -> void:
+	for fish_trapped in get_node(fish_trapped_parent).get_children():
+		connect("minigame_complete", fish_trapped,"_on_BG_Slider_minigame_complete")
+		connect("minigame_failed", fish_trapped, "_on_BG_Slider_minigame_failed")
 	hide()
-	
 
 func _process(delta: float) -> void:
 	

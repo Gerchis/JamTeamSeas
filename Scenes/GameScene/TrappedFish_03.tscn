@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_001.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_006.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/GameAssets/TrappedFish.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/GameScene/Fish_01.tscn" type="PackedScene" id=3]
 [ext_resource path="res://PointExclamation_001.png" type="Texture" id=4]

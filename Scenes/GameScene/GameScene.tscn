@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://Scenes/GameScene/PLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Background/fodoUnderwaterPrueba_01.png" type="Texture" id=2]
@@ -27,11 +27,11 @@
 [ext_resource path="res://Sprites/BreakOcean/_0006_Break_background_001.png" type="Texture" id=25]
 [ext_resource path="res://Sprites/BreakOcean/_0005_Break_reefCoral_002.png" type="Texture" id=26]
 [ext_resource path="res://Sprites/BreakOcean/_0003_Break_seaWeed_001.png" type="Texture" id=27]
-[ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_011.png" type="Texture" id=28]
-[ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_001.png" type="Texture" id=29]
-[ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_002.png" type="Texture" id=30]
-[ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_012.png" type="Texture" id=31]
-[ext_resource path="res://Sprites/Fish/FishPlastic/FishPlastic_007.png" type="Texture" id=32]
+[ext_resource path="res://Scenes/GameScene/TrappedFish_04.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Scenes/GameScene/TrappedFish_03.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Scenes/GameScene/TrappedFish_02.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Scenes/GameScene/TrappedFish_05.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Scenes/GameScene/Fish_01.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Scenes/GameScene/TrappedFish_01.tscn" type="PackedScene" id=33]
 [ext_resource path="res://GraberSlider_001.png" type="Texture" id=34]
 [ext_resource path="res://Scripts/UI/SliderMinigame.gd" type="Script" id=35]
@@ -41,6 +41,10 @@
 [ext_resource path="res://WKeys_001.png" type="Texture" id=39]
 [ext_resource path="res://SKeys_001.png" type="Texture" id=40]
 [ext_resource path="res://DKeys_001.png" type="Texture" id=41]
+[ext_resource path="res://Scenes/GameScene/Fish_05.tscn" type="PackedScene" id=42]
+[ext_resource path="res://Scenes/GameScene/Fish_03.tscn" type="PackedScene" id=43]
+[ext_resource path="res://Scenes/GameScene/Fish_02.tscn" type="PackedScene" id=44]
+[ext_resource path="res://Scenes/GameScene/Fish_04.tscn" type="PackedScene" id=45]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4007.22, 100.945 )
@@ -388,7 +392,8 @@ script = ExtResource( 18 )
 wb_shader = ExtResource( 17 )
 sprite_list = [ NodePath("AbissalSea"), NodePath("ReefBackground"), NodePath("SeaBottom"), NodePath("LimitLeft"), NodePath("SeaWeed"), NodePath("Shadow") ]
 new_sprites = [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 24 ) ]
-hiddenFish = [ NodePath("TrappedFishes/TrappedFish") ]
+hiddenFish = [ NodePath("TrappedFishes/TrappedFish"), NodePath("TrappedFishes/TrappedFish2"), NodePath("TrappedFishes/TrappedFish3"), NodePath("TrappedFishes/TrappedFish4"), NodePath("TrappedFishes/TrappedFish5") ]
+swimming_fish = [ NodePath("Fishes/Fish_01"), NodePath("Fishes/Fish_02"), NodePath("Fishes/Fish_03"), NodePath("Fishes/Fish_04"), NodePath("Fishes/Fish_05") ]
 
 [node name="AbissalSea" type="Sprite" parent="."]
 material = ExtResource( 17 )
@@ -463,41 +468,66 @@ position = Vector2( -3601.93, 0 )
 rotation = -0.261799
 shape = SubResource( 7 )
 
-[node name="FishPlastic_001" type="Sprite" parent="."]
-position = Vector2( -238.294, 328.035 )
-scale = Vector2( 0.0836842, 0.0836842 )
-texture = ExtResource( 29 )
-
-[node name="FishPlastic_012" type="Sprite" parent="."]
-position = Vector2( 655.218, 864.929 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 31 )
-
-[node name="FishPlastic_002" type="Sprite" parent="."]
-position = Vector2( 1874.69, -83.51 )
-scale = Vector2( 0.084, 0.084 )
-texture = ExtResource( 30 )
-
-[node name="FishPlastic_011" type="Sprite" parent="."]
-position = Vector2( 371.23, 0 )
-scale = Vector2( 0.084, 0.084 )
-texture = ExtResource( 28 )
-
-[node name="FishPlastic_007" type="Sprite" parent="."]
-position = Vector2( -1093.28, 673.45 )
-scale = Vector2( 0.084, 0.084 )
-texture = ExtResource( 32 )
-
 [node name="Fishes" type="Node2D" parent="."]
 position = Vector2( 70.8931, 24.318 )
-scale = Vector2( 0.084, 0.084 )
+scale = Vector2( 0.09, 0.09 )
+
+[node name="Fish_01" parent="Fishes" instance=ExtResource( 32 )]
+position = Vector2( -11771.8, 7719.64 )
+
+[node name="Fish_02" parent="Fishes" instance=ExtResource( 44 )]
+position = Vector2( -3955.33, 1106.55 )
+
+[node name="Fish_03" parent="Fishes" instance=ExtResource( 43 )]
+position = Vector2( 16880.8, 941.745 )
+
+[node name="Fish_04" parent="Fishes" instance=ExtResource( 45 )]
+position = Vector2( 12972.5, 6874.74 )
+
+[node name="Fish_05" parent="Fishes" instance=ExtResource( 42 )]
+position = Vector2( 894.664, 2778.15 )
 
 [node name="TrappedFishes" type="Node2D" parent="."]
-scale = Vector2( 0.084, 0.084 )
+scale = Vector2( 0.095, 0.095 )
 
 [node name="TrappedFish" parent="TrappedFishes" instance=ExtResource( 33 )]
+visible = false
 position = Vector2( -2257.52, 4351.19 )
 fish_parent = NodePath("../../Fishes")
+player = NodePath("../../PLayer")
+slider = NodePath("../../UI/BG_Slider")
+
+[node name="TrappedFish2" parent="TrappedFishes" instance=ExtResource( 30 )]
+visible = false
+position = Vector2( 20599.1, 1898.23 )
+released_fish = ExtResource( 44 )
+fish_parent = NodePath("../../Fishes")
+player = NodePath("../../PLayer")
+slider = NodePath("../../UI/BG_Slider")
+
+[node name="TrappedFish3" parent="TrappedFishes" instance=ExtResource( 29 )]
+visible = false
+position = Vector2( 10284.7, 1250.06 )
+released_fish = ExtResource( 43 )
+fish_parent = NodePath("../../Fishes")
+player = NodePath("../../PLayer")
+slider = NodePath("../../UI/BG_Slider")
+
+[node name="TrappedFish4" parent="TrappedFishes" instance=ExtResource( 28 )]
+visible = false
+position = Vector2( -9343.11, 8180.59 )
+released_fish = ExtResource( 45 )
+fish_parent = NodePath("../../Fishes")
+player = NodePath("../../PLayer")
+slider = NodePath("../../UI/BG_Slider")
+
+[node name="TrappedFish5" parent="TrappedFishes" instance=ExtResource( 31 )]
+visible = false
+position = Vector2( -13855, 1383.84 )
+released_fish = ExtResource( 42 )
+fish_parent = NodePath("../../Fishes")
+player = NodePath("../../PLayer")
+slider = NodePath("../../UI/BG_Slider")
 
 [node name="PLayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1130.75, 524.074 )
@@ -593,7 +623,7 @@ anims/Pre_Net = SubResource( 21 )
 
 [node name="DistortionEffect" type="Sprite" parent="."]
 material = ExtResource( 8 )
-position = Vector2( 282.861, 426.536 )
+position = Vector2( 284.05, 426.536 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
@@ -655,6 +685,7 @@ min_win_value = 43.0
 max_win_value = 61.0
 max_rounds = 3
 key_textures = [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 38 ), ExtResource( 41 ) ]
+fish_trapped_parent = NodePath("../../TrappedFishes")
 
 [node name="HSlider" type="HSlider" parent="UI/BG_Slider"]
 anchor_left = 0.5
