@@ -65,3 +65,11 @@ func _on_FishingNet_stop_movement() -> void:
 func _on_TimerRun_timeout() -> void:
 	is_running = true
 	get_node(run_anim).play("Start")
+
+
+func _on_TrappedFish_start_movement() -> void:
+	can_move = true
+
+
+func _on_TrappedFish_stop_movement() -> void:
+	can_move = false

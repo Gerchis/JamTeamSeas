@@ -11,6 +11,7 @@ var key_pool = ["w", "s", "a", "d"]
 export var min_win_value := 0.0
 export var max_win_value := 0.0
 export var max_rounds := 0
+export(Array, Texture) var key_textures
 
 signal minigame_complete (_path)
 signal minigame_failed (_path)
@@ -50,8 +51,9 @@ func _process(delta: float) -> void:
 
 func randomize_key():
 	
-	key = key_pool[randi() % key_pool.size()]
-	
+	var index_rand = randi() % key_pool.size()
+	key = key_pool[index_rand]
+	$HSlider/Key.texture = key_textures[index_rand]
 
 func _on_TrappedFish_init_minigame(_speed, _path, _factor) -> void:
 	if !is_visible_in_tree():

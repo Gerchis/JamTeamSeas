@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Scenes/GameScene/PLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Background/fodoUnderwaterPrueba_01.png" type="Texture" id=2]
@@ -37,6 +37,10 @@
 [ext_resource path="res://Scripts/UI/SliderMinigame.gd" type="Script" id=35]
 [ext_resource path="res://OutlineSlider_001.png" type="Texture" id=36]
 [ext_resource path="res://InsideSlider_001.png" type="Texture" id=37]
+[ext_resource path="res://AKeys_001.png" type="Texture" id=38]
+[ext_resource path="res://WKeys_001.png" type="Texture" id=39]
+[ext_resource path="res://SKeys_001.png" type="Texture" id=40]
+[ext_resource path="res://DKeys_001.png" type="Texture" id=41]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4007.22, 100.945 )
@@ -489,6 +493,7 @@ position = Vector2( 70.8931, 24.318 )
 
 [node name="TrappedFish" parent="." instance=ExtResource( 33 )]
 position = Vector2( -189.632, 365.5 )
+fish_parent = NodePath("../Fishes")
 
 [node name="PLayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1130.75, 524.074 )
@@ -644,6 +649,7 @@ script = ExtResource( 35 )
 min_win_value = 43.0
 max_win_value = 61.0
 max_rounds = 3
+key_textures = [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 38 ), ExtResource( 41 ) ]
 
 [node name="HSlider" type="HSlider" parent="UI/BG_Slider"]
 anchor_left = 0.5
@@ -665,9 +671,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Key" type="Sprite" parent="UI/BG_Slider/HSlider"]
+position = Vector2( 437.628, 240.22 )
+texture = ExtResource( 38 )
+
 [connection signal="init_minigame" from="TrappedFish" to="UI/BG_Slider" method="_on_TrappedFish_init_minigame"]
+[connection signal="start_movement" from="TrappedFish" to="PLayer" method="_on_TrappedFish_start_movement"]
+[connection signal="stop_movement" from="TrappedFish" to="PLayer" method="_on_TrappedFish_stop_movement"]
 [connection signal="start_running" from="PLayer" to="FishingNet" method="_on_PLayer_start_running"]
 [connection signal="stop_movement" from="FishingNet" to="PLayer" method="_on_FishingNet_stop_movement"]
 [connection signal="body_entered" from="FishingNet/FishingNetSprite/DeadTrigger" to="UI/FadeOut" method="_on_DeadTrigger_body_entered"]
 [connection signal="body_shape_entered" from="FishingNet/NetTrigger" to="FishingNet" method="_on_NetTrigger_body_shape_entered"]
 [connection signal="animation_finished" from="UI/FadeOut/AnimationPlayer" to="UI/FadeOut" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="minigame_complete" from="UI/BG_Slider" to="TrappedFish" method="_on_BG_Slider_minigame_complete"]
+[connection signal="minigame_failed" from="UI/BG_Slider" to="TrappedFish" method="_on_BG_Slider_minigame_failed"]
