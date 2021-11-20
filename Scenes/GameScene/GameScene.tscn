@@ -484,6 +484,9 @@ position = Vector2( -1093.28, 673.45 )
 scale = Vector2( 0.084, 0.084 )
 texture = ExtResource( 32 )
 
+[node name="Fishes" type="Node2D" parent="."]
+position = Vector2( 70.8931, 24.318 )
+
 [node name="TrappedFish" parent="." instance=ExtResource( 33 )]
 position = Vector2( -189.632, 365.5 )
 
@@ -638,6 +641,9 @@ position = Vector2( 70.8931, 24.318 )
 texture = ExtResource( 36 )
 centered = false
 script = ExtResource( 35 )
+min_win_value = 43.0
+max_win_value = 61.0
+max_rounds = 3
 
 [node name="HSlider" type="HSlider" parent="UI/BG_Slider"]
 anchor_left = 0.5

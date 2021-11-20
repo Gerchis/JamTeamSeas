@@ -2,14 +2,17 @@ extends Area2D
 
 var isInteractable := false
 
+export(PackedScene) var released_fish 
+
 signal init_minigame(_speed, _key, _path)
 
 func _ready() -> void:
-	hide()
+	#hide()
+	pass
 
 func _process(delta: float) -> void:
 	if isInteractable && Input.is_action_just_pressed("interaction"):
-		emit_signal("init_minigame",50,"j", get_path())
+		emit_signal("init_minigame",30, get_path(), 1)
 
 
 
