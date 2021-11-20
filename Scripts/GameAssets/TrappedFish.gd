@@ -10,8 +10,7 @@ signal stop_movement
 signal start_movement
 
 func _ready() -> void:
-	#hide()
-	pass
+	hide()
 
 func _process(delta: float) -> void:
 	if isInteractable && Input.is_action_just_pressed("interaction"):

@@ -18,6 +18,7 @@ signal minigame_failed (_path)
 
 func _ready() -> void:
 	hide()
+	
 
 func _process(delta: float) -> void:
 	

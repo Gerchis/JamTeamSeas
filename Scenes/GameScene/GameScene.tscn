@@ -388,7 +388,7 @@ script = ExtResource( 18 )
 wb_shader = ExtResource( 17 )
 sprite_list = [ NodePath("AbissalSea"), NodePath("ReefBackground"), NodePath("SeaBottom"), NodePath("LimitLeft"), NodePath("SeaWeed"), NodePath("Shadow") ]
 new_sprites = [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 24 ) ]
-hiddenFish = [ NodePath("TrappedFish") ]
+hiddenFish = [ NodePath("TrappedFishes/TrappedFish") ]
 
 [node name="AbissalSea" type="Sprite" parent="."]
 material = ExtResource( 17 )
@@ -490,10 +490,14 @@ texture = ExtResource( 32 )
 
 [node name="Fishes" type="Node2D" parent="."]
 position = Vector2( 70.8931, 24.318 )
+scale = Vector2( 0.084, 0.084 )
 
-[node name="TrappedFish" parent="." instance=ExtResource( 33 )]
-position = Vector2( -189.632, 365.5 )
-fish_parent = NodePath("../Fishes")
+[node name="TrappedFishes" type="Node2D" parent="."]
+scale = Vector2( 0.084, 0.084 )
+
+[node name="TrappedFish" parent="TrappedFishes" instance=ExtResource( 33 )]
+position = Vector2( -2257.52, 4351.19 )
+fish_parent = NodePath("../../Fishes")
 
 [node name="PLayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1130.75, 524.074 )
@@ -642,7 +646,8 @@ anims/End = SubResource( 25 )
 anims/Start = SubResource( 26 )
 
 [node name="BG_Slider" type="Sprite" parent="UI"]
-position = Vector2( 70.8931, 24.318 )
+position = Vector2( 371.816, 467.676 )
+scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 36 )
 centered = false
 script = ExtResource( 35 )
@@ -672,16 +677,17 @@ __meta__ = {
 }
 
 [node name="Key" type="Sprite" parent="UI/BG_Slider/HSlider"]
-position = Vector2( 437.628, 240.22 )
+position = Vector2( 434.295, 222.72 )
+scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 38 )
 
-[connection signal="init_minigame" from="TrappedFish" to="UI/BG_Slider" method="_on_TrappedFish_init_minigame"]
-[connection signal="start_movement" from="TrappedFish" to="PLayer" method="_on_TrappedFish_start_movement"]
-[connection signal="stop_movement" from="TrappedFish" to="PLayer" method="_on_TrappedFish_stop_movement"]
+[connection signal="init_minigame" from="TrappedFishes/TrappedFish" to="UI/BG_Slider" method="_on_TrappedFish_init_minigame"]
+[connection signal="start_movement" from="TrappedFishes/TrappedFish" to="PLayer" method="_on_TrappedFish_start_movement"]
+[connection signal="stop_movement" from="TrappedFishes/TrappedFish" to="PLayer" method="_on_TrappedFish_stop_movement"]
 [connection signal="start_running" from="PLayer" to="FishingNet" method="_on_PLayer_start_running"]
 [connection signal="stop_movement" from="FishingNet" to="PLayer" method="_on_FishingNet_stop_movement"]
 [connection signal="body_entered" from="FishingNet/FishingNetSprite/DeadTrigger" to="UI/FadeOut" method="_on_DeadTrigger_body_entered"]
 [connection signal="body_shape_entered" from="FishingNet/NetTrigger" to="FishingNet" method="_on_NetTrigger_body_shape_entered"]
 [connection signal="animation_finished" from="UI/FadeOut/AnimationPlayer" to="UI/FadeOut" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="minigame_complete" from="UI/BG_Slider" to="TrappedFish" method="_on_BG_Slider_minigame_complete"]
-[connection signal="minigame_failed" from="UI/BG_Slider" to="TrappedFish" method="_on_BG_Slider_minigame_failed"]
+[connection signal="minigame_complete" from="UI/BG_Slider" to="TrappedFishes/TrappedFish" method="_on_BG_Slider_minigame_complete"]
+[connection signal="minigame_failed" from="UI/BG_Slider" to="TrappedFishes/TrappedFish" method="_on_BG_Slider_minigame_failed"]
