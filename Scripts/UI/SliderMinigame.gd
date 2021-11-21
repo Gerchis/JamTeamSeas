@@ -21,6 +21,9 @@ func _ready() -> void:
 	for fish_trapped in get_node(fish_trapped_parent).get_children():
 		connect("minigame_complete", fish_trapped,"_on_BG_Slider_minigame_complete")
 		connect("minigame_failed", fish_trapped, "_on_BG_Slider_minigame_failed")
+	
+	connect("minigame_complete", owner, "add_color")
+	
 	hide()
 
 func _process(delta: float) -> void:

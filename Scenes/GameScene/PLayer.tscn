@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Player/PLayerController.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Turtle/WalkAnimationTurtle_003.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Turtle/IdleAnimationTurtle_02.png" type="Texture" id=3]
-
+[ext_resource path="res://shader/Inverted_BlackWhite.tres" type="Material" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -109,6 +109,7 @@ local_coords = false
 process_material = SubResource( 6 )
 
 [node name="Graphics" type="Sprite" parent="."]
+material = ExtResource( 4 )
 position = Vector2( 8.49487, 5.66324 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 2 )

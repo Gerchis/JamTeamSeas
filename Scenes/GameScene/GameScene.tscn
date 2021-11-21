@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://Scenes/GameScene/PLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Background/fodoUnderwaterPrueba_01.png" type="Texture" id=2]
@@ -45,6 +45,7 @@
 [ext_resource path="res://Scenes/GameScene/Fish_03.tscn" type="PackedScene" id=43]
 [ext_resource path="res://Scenes/GameScene/Fish_02.tscn" type="PackedScene" id=44]
 [ext_resource path="res://Scenes/GameScene/Fish_04.tscn" type="PackedScene" id=45]
+[ext_resource path="res://shader/Inverted_BlackWhite.tres" type="Material" id=46]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4007.22, 100.945 )
@@ -275,6 +276,39 @@ tracks/3/keys = {
 "values": [ -120.0, -120.0, -74.9999 ]
 }
 
+[sub_resource type="Animation" id=29]
+resource_name = "EndFadeOut"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 5.1, 12, 14.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../../PLayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 5.1, 10.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_dying"
+}, {
+"args": [  ],
+"method": "_on_TrappedFish_stop_movement"
+} ]
+}
+
 [sub_resource type="Animation" id=22]
 length = 0.5
 tracks/0/type = "value"
@@ -305,7 +339,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "method"
-tracks/1/path = NodePath("../../FishingNet")
+tracks/1/path = NodePath("../..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -314,12 +348,12 @@ tracks/1/keys = {
 "times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "destroy_net"
+"args": [ 0.0 ],
+"method": "grayscale_assets"
 } ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("../..")
+tracks/2/path = NodePath("../../FishingNet")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -328,8 +362,8 @@ tracks/2/keys = {
 "times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ 0.0 ],
-"method": "grayscale_assets"
+"args": [  ],
+"method": "queue_free"
 } ]
 }
 
@@ -390,6 +424,7 @@ region_rect = Rect2( 0, 0, 840, 60 )
 [node name="GameScene" type="Node2D"]
 script = ExtResource( 18 )
 wb_shader = ExtResource( 17 )
+player_wb_shader = ExtResource( 46 )
 sprite_list = [ NodePath("AbissalSea"), NodePath("ReefBackground"), NodePath("SeaBottom"), NodePath("LimitLeft"), NodePath("SeaWeed"), NodePath("Shadow") ]
 new_sprites = [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 24 ) ]
 hiddenFish = [ NodePath("TrappedFishes/TrappedFish"), NodePath("TrappedFishes/TrappedFish2"), NodePath("TrappedFishes/TrappedFish3"), NodePath("TrappedFishes/TrappedFish4"), NodePath("TrappedFishes/TrappedFish5") ]
@@ -469,8 +504,7 @@ rotation = -0.261799
 shape = SubResource( 7 )
 
 [node name="Fishes" type="Node2D" parent="."]
-position = Vector2( 70.8931, 24.318 )
-scale = Vector2( 0.09, 0.09 )
+scale = Vector2( 0.145, 0.145 )
 
 [node name="Fish_01" parent="Fishes" instance=ExtResource( 32 )]
 position = Vector2( -11771.8, 7719.64 )
@@ -488,7 +522,7 @@ position = Vector2( 12972.5, 6874.74 )
 position = Vector2( 894.664, 2778.15 )
 
 [node name="TrappedFishes" type="Node2D" parent="."]
-scale = Vector2( 0.095, 0.095 )
+scale = Vector2( 0.09, 0.09 )
 
 [node name="TrappedFish" parent="TrappedFishes" instance=ExtResource( 33 )]
 visible = false
@@ -532,6 +566,7 @@ slider = NodePath("../../UI/BG_Slider")
 [node name="PLayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1130.75, 524.074 )
 run_anim = NodePath("../UI/Run/AnimationPlayer")
+down_force = 25.0
 
 [node name="Camera2D" type="Camera2D" parent="PLayer"]
 current = true
@@ -630,7 +665,7 @@ texture = ExtResource( 2 )
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="FadeOut" type="ColorRect" parent="UI"]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.0284172 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
@@ -641,6 +676,7 @@ __meta__ = {
 game_scene = "res://Scenes/GameScene/GameScene.tscn"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/FadeOut"]
+anims/EndFadeOut = SubResource( 29 )
 anims/FadeOut = SubResource( 22 )
 
 [node name="SmokeFadeOut" type="ColorRect" parent="UI"]
@@ -712,13 +748,8 @@ position = Vector2( 434.295, 222.72 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 38 )
 
-[connection signal="init_minigame" from="TrappedFishes/TrappedFish" to="UI/BG_Slider" method="_on_TrappedFish_init_minigame"]
-[connection signal="start_movement" from="TrappedFishes/TrappedFish" to="PLayer" method="_on_TrappedFish_start_movement"]
-[connection signal="stop_movement" from="TrappedFishes/TrappedFish" to="PLayer" method="_on_TrappedFish_stop_movement"]
 [connection signal="start_running" from="PLayer" to="FishingNet" method="_on_PLayer_start_running"]
 [connection signal="stop_movement" from="FishingNet" to="PLayer" method="_on_FishingNet_stop_movement"]
 [connection signal="body_entered" from="FishingNet/FishingNetSprite/DeadTrigger" to="UI/FadeOut" method="_on_DeadTrigger_body_entered"]
 [connection signal="body_shape_entered" from="FishingNet/NetTrigger" to="FishingNet" method="_on_NetTrigger_body_shape_entered"]
 [connection signal="animation_finished" from="UI/FadeOut/AnimationPlayer" to="UI/FadeOut" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="minigame_complete" from="UI/BG_Slider" to="TrappedFishes/TrappedFish" method="_on_BG_Slider_minigame_complete"]
-[connection signal="minigame_failed" from="UI/BG_Slider" to="TrappedFishes/TrappedFish" method="_on_BG_Slider_minigame_failed"]

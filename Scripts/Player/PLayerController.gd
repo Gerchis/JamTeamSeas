@@ -4,6 +4,7 @@ export var speed := 500.0
 export var accel := 10.0
 export var rotation_speed := 5.0
 export(NodePath) var run_anim
+export var down_force := 400.0
 
 
 var actual_velocity := Vector2.ZERO
@@ -11,6 +12,7 @@ var actual_rotation := 0.0
 
 var can_move := true
 var is_running := false
+var is_dying := false
 
 onready var animation := $AnimationPlayer
 onready var particles := $Particles2D
@@ -41,6 +43,9 @@ func _physics_process(delta: float) -> void:
 	var _target_rotation = _movement_direction.normalized().angle() if $Graphics.flip_h else (-_movement_direction).normalized().angle()
 	
 	var _target_velocity = _movement_direction.normalized() * speed
+	
+	if is_dying:
+		_target_velocity.y += down_force
 	
 	actual_velocity = actual_velocity.linear_interpolate(_target_velocity, delta * accel)
 	
@@ -74,3 +79,6 @@ func _on_TrappedFish_start_movement() -> void:
 
 func _on_TrappedFish_stop_movement() -> void:
 	can_move = false
+
+func start_dying():
+	is_dying = true
