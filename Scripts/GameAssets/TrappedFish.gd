@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 	if isInteractable && Input.is_action_just_pressed("interaction"):
 		emit_signal("init_minigame",30, get_path(), 1)
 		emit_signal("stop_movement")
+		$Graphics/Exclamation.hide()
 
 
 func _on_TrappedFish_body_entered(body: Node) -> void:
@@ -39,10 +40,11 @@ func _on_BG_Slider_minigame_complete(_path) -> void:
 		emit_signal("start_movement")
 		var instance = released_fish.instance()
 		get_node(fish_parent).add_child(instance)
-		instance.position = position
+		instance.global_position  = global_position
 		queue_free()
 
 
 func _on_BG_Slider_minigame_failed(_path) -> void:
 	if _path == get_path():
 		emit_signal("start_movement")
+		$Graphics/Exclamation.show()
