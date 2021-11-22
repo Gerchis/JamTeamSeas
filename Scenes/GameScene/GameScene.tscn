@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://Scenes/GameScene/PLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Background/fodoUnderwaterPrueba_01.png" type="Texture" id=2]
@@ -110,8 +110,14 @@ anim_speed_random = 0.4
 
 [sub_resource type="CanvasItemMaterial" id=15]
 
+[sub_resource type="Gradient" id=30]
+colors = PoolColorArray( 0.512233, 0.554688, 0.268677, 0, 0.308594, 0.308594, 0.308594, 1 )
+
+[sub_resource type="GradientTexture" id=31]
+gradient = SubResource( 30 )
+
 [sub_resource type="Curve" id=16]
-_data = [ Vector2( 0, 0.0950919 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.844154 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0.0950919 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=17]
 curve = SubResource( 16 )
@@ -120,17 +126,15 @@ curve = SubResource( 16 )
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 500.0
-initial_velocity_random = 1.0
 angular_velocity = -40.0
 angular_velocity_random = 0.3
 orbit_velocity = 0.1
 orbit_velocity_random = 1.0
 angle = 360.0
 angle_random = 1.0
-scale = 0.2
-scale_random = 0.5
+scale = 2.0
 scale_curve = SubResource( 17 )
+color_ramp = SubResource( 31 )
 anim_speed_random = 0.4
 
 [sub_resource type="RectangleShape2D" id=19]
@@ -193,10 +197,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 3.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ true, false ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("FishingNetSprite/Particles2Burst:emitting")
@@ -504,19 +508,19 @@ shape = SubResource( 7 )
 scale = Vector2( 0.145, 0.145 )
 
 [node name="Fish_01" parent="Fishes" instance=ExtResource( 32 )]
-position = Vector2( -11771.8, 7719.64 )
+position = Vector2( 8084.95, 2198.72 )
 
 [node name="Fish_02" parent="Fishes" instance=ExtResource( 44 )]
-position = Vector2( -3955.33, 1106.55 )
+position = Vector2( 14532.8, 619.41 )
 
 [node name="Fish_03" parent="Fishes" instance=ExtResource( 43 )]
-position = Vector2( 16880.8, 941.745 )
+position = Vector2( 1872.25, 3632.61 )
 
 [node name="Fish_04" parent="Fishes" instance=ExtResource( 45 )]
-position = Vector2( 12972.5, 6874.74 )
+position = Vector2( -7440.98, 843.484 )
 
 [node name="Fish_05" parent="Fishes" instance=ExtResource( 42 )]
-position = Vector2( 894.664, 2778.15 )
+position = Vector2( -7989.84, 5793.78 )
 
 [node name="TrappedFishes" type="Node2D" parent="."]
 scale = Vector2( 0.09, 0.09 )
@@ -589,10 +593,11 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="FishingNet" type="Node2D" parent="."]
-position = Vector2( 0, -1144 )
+position = Vector2( 5.03979, -1144 )
 rotation = -1.5708
 script = ExtResource( 12 )
 run_anim = NodePath("../UI/Run/AnimationPlayer")
+player = NodePath("../PLayer")
 
 [node name="FishingNetSprite" type="Sprite" parent="FishingNet"]
 position = Vector2( -323.939, -1533.71 )
@@ -627,11 +632,10 @@ process_material = SubResource( 14 )
 texture = ExtResource( 15 )
 
 [node name="Particles2Burst" type="Particles2D" parent="FishingNet/FishingNetSprite"]
-modulate = Color( 0.356863, 0.298039, 0, 0.388235 )
 material = SubResource( 15 )
 position = Vector2( 491.614, 416.069 )
 emitting = false
-amount = 200
+amount = 1
 lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
@@ -680,7 +684,7 @@ anims/FadeOut = SubResource( 23 )
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.247059, 0.25098, 0.176471, 1 )
+color = Color( 0.309804, 0.309804, 0.309804, 1 )
 script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false

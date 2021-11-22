@@ -27,8 +27,9 @@ position = Vector2( 0, -2.66968 )
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 2 )
-turn_time = 2.0
-speed = 50.0
+turn_time = 4.5
+speed = 70.0
+init_turn = true
 
 [node name="Fish" type="Sprite" parent="."]
 texture = ExtResource( 1 )
