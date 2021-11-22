@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/GameAssets/PlasticThrower.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/GameScene/Plastic.tscn" type="PackedScene" id=2]
+
+[node name="PlasticThrower" type="Node2D"]
+script = ExtResource( 1 )
+plastic = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
