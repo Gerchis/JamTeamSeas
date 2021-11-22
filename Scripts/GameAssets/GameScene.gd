@@ -25,6 +25,8 @@ func grayscale_assets(_factor : float):
 	
 	for fish in swimming_fish:
 		get_node(fish).queue_free()
+	
+	$AsstesPlastic.show()
 
 func add_color(_path):
 	wb_shader.set_shader_param("factor", wb_shader.get_shader_param("factor") + added_color)

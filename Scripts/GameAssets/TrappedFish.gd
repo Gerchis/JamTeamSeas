@@ -7,6 +7,7 @@ export(NodePath) var fish_parent
 export(Array, Texture) var extra_key
 export(NodePath) var player
 export(NodePath) var slider
+export(NodePath) var phrase
 
 signal init_minigame(_speed, _key, _path)
 signal stop_movement
@@ -41,6 +42,8 @@ func _on_BG_Slider_minigame_complete(_path) -> void:
 		var instance = released_fish.instance()
 		get_node(fish_parent).add_child(instance)
 		instance.global_position  = global_position
+		
+		get_node(phrase).show()
 		queue_free()
 
 
