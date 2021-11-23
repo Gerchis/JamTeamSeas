@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="JamTeamSeas"
-run/main_scene="res://Scenes/MainMenu/MainMenu.tscn"
+run/main_scene="res://Scenes/SplashScreenGodot/splash_screen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
