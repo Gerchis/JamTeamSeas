@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=92 format=2]
 
 [ext_resource path="res://Scenes/GameScene/PLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Background/fodoUnderwaterPrueba_01.png" type="Texture" id=2]
@@ -58,6 +58,7 @@
 [ext_resource path="res://Sprites/Texts/TXTSFinal.png" type="Texture" id=56]
 [ext_resource path="res://Sprites/Texts/TXTSPressAnyKey.png" type="Texture" id=57]
 [ext_resource path="res://MashUpSongUnderwater_001.mp3" type="AudioStream" id=58]
+[ext_resource path="res://Scripts/MainMenu/BubblesOrigin.gd" type="Script" id=59]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4007.22, 100.945 )
@@ -503,6 +504,14 @@ collision_layer = 2
 position = Vector2( 0, -1166.39 )
 shape = SubResource( 1 )
 
+[node name="BubbleOrigin7" type="Node2D" parent="."]
+position = Vector2( -258.084, 890.955 )
+script = ExtResource( 59 )
+
+[node name="BubbleOrigin8" type="Node2D" parent="."]
+position = Vector2( 811.062, 616.598 )
+script = ExtResource( 59 )
+
 [node name="BackgroundDist" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.054902 )
 material = ExtResource( 7 )
@@ -515,6 +524,22 @@ material = ExtResource( 17 )
 position = Vector2( 282.861, 426.536 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 10 )
+
+[node name="BubbleOrigin" type="Node2D" parent="."]
+position = Vector2( 1735.74, 728.142 )
+script = ExtResource( 59 )
+
+[node name="BubbleOrigin2" type="Node2D" parent="."]
+position = Vector2( 440.538, 876.813 )
+script = ExtResource( 59 )
+
+[node name="BubbleOrigin3" type="Node2D" parent="."]
+position = Vector2( -1031.36, 985.938 )
+script = ExtResource( 59 )
+
+[node name="BubbleOrigin4" type="Node2D" parent="."]
+position = Vector2( -1461.94, 269.531 )
+script = ExtResource( 59 )
 
 [node name="SeaBottom" type="Sprite" parent="."]
 material = ExtResource( 17 )
@@ -883,6 +908,14 @@ texture = ExtResource( 50 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AsstesPlastic/Sprite15"]
 autoplay = "PropellerAnimation"
 anims/PropellerAnimation = SubResource( 24 )
+
+[node name="BubbleOrigin5" type="Node2D" parent="."]
+position = Vector2( -103.634, 968.968 )
+script = ExtResource( 59 )
+
+[node name="BubbleOrigin6" type="Node2D" parent="."]
+position = Vector2( 2062.94, 966.139 )
+script = ExtResource( 59 )
 
 [node name="DistortionEffect" type="Sprite" parent="."]
 material = ExtResource( 8 )
