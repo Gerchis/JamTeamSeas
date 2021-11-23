@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=90 format=2]
 
 [ext_resource path="res://Scenes/GameScene/PLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Background/fodoUnderwaterPrueba_01.png" type="Texture" id=2]
@@ -47,6 +47,16 @@
 [ext_resource path="res://Scenes/GameScene/Fish_04.tscn" type="PackedScene" id=45]
 [ext_resource path="res://shader/Inverted_BlackWhite.tres" type="Material" id=46]
 [ext_resource path="res://Scenes/GameScene/PlasticThrower.tscn" type="PackedScene" id=47]
+[ext_resource path="res://Sprites/AssetsPlastic/assetsPlastic_001.png" type="Texture" id=48]
+[ext_resource path="res://Sprites/Boat/Boat_001.png" type="Texture" id=49]
+[ext_resource path="res://Sprites/Boat/PropellerBoat_001.png" type="Texture" id=50]
+[ext_resource path="res://Sprites/Texts/TXTS_0002_8-MILLION-TONS-OF-PLASTIC-WASTE-END-UP-IN-THE-OCEANS-EVERY-YEAR.png" type="Texture" id=51]
+[ext_resource path="res://Sprites/Texts/TXTS_0001_IF-WE-KEEP-LIKE-THIS,-THE-OCEANS-WILL-CONTAIN-MORE-PLASTIC-THAN.png" type="Texture" id=52]
+[ext_resource path="res://Sprites/Texts/TXTS_0003_EACH-YEAR-640,000-TONNES-OF-FISHING-GEAR-IS-LOSE-OR-ABANDONED-I.png" type="Texture" id=53]
+[ext_resource path="res://Sprites/Texts/TXTS_0000_EVERY-SECOND-MORE-THAN-200-KILOS-OF-GARBAGE-END-UP-IN-THE-OCEAN.png" type="Texture" id=54]
+[ext_resource path="res://Sprites/Texts/TXTS_0004_IN-2018,-THE-GLOBAL-PRODUCTION-OF-PLASTICS-WAS-359-MILLION--TON.png" type="Texture" id=55]
+[ext_resource path="res://Sprites/Texts/TXTSFinal.png" type="Texture" id=56]
+[ext_resource path="res://Sprites/Texts/TXTSPressAnyKey.png" type="Texture" id=57]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4007.22, 100.945 )
@@ -282,7 +292,24 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id=24]
-length = 15.0
+resource_name = "PropellerAnimation"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 177.7, 355.3 ]
+}
+
+[sub_resource type="Animation" id=25]
+length = 17.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -312,8 +339,20 @@ tracks/1/keys = {
 "method": "_on_TrappedFish_stop_movement"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 13.1, 14.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=26]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -328,7 +367,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=27]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -385,7 +424,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=28]
 length = 4.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -400,7 +439,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=29]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -415,7 +454,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id=30]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -430,11 +469,11 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="StyleBoxTexture" id=30]
+[sub_resource type="StyleBoxTexture" id=31]
 texture = ExtResource( 37 )
 region_rect = Rect2( 0, 0, 840, 60 )
 
-[sub_resource type="StyleBoxTexture" id=31]
+[sub_resource type="StyleBoxTexture" id=32]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource( 18 )
@@ -547,6 +586,7 @@ position = Vector2( -2257.52, 4351.19 )
 fish_parent = NodePath("../../Fishes")
 player = NodePath("../../PLayer")
 slider = NodePath("../../UI/BG_Slider")
+phrase = NodePath("../../Phrases/Phrase05")
 
 [node name="TrappedFish2" parent="TrappedFishes" instance=ExtResource( 30 )]
 visible = false
@@ -555,6 +595,7 @@ released_fish = ExtResource( 44 )
 fish_parent = NodePath("../../Fishes")
 player = NodePath("../../PLayer")
 slider = NodePath("../../UI/BG_Slider")
+phrase = NodePath("../../Phrases/Phrase04")
 
 [node name="TrappedFish3" parent="TrappedFishes" instance=ExtResource( 29 )]
 visible = false
@@ -563,6 +604,7 @@ released_fish = ExtResource( 43 )
 fish_parent = NodePath("../../Fishes")
 player = NodePath("../../PLayer")
 slider = NodePath("../../UI/BG_Slider")
+phrase = NodePath("../../Phrases/Phrase03")
 
 [node name="TrappedFish4" parent="TrappedFishes" instance=ExtResource( 28 )]
 visible = false
@@ -571,6 +613,7 @@ released_fish = ExtResource( 45 )
 fish_parent = NodePath("../../Fishes")
 player = NodePath("../../PLayer")
 slider = NodePath("../../UI/BG_Slider")
+phrase = NodePath("../../Phrases/Phrase02")
 
 [node name="TrappedFish5" parent="TrappedFishes" instance=ExtResource( 31 )]
 visible = false
@@ -579,6 +622,7 @@ released_fish = ExtResource( 42 )
 fish_parent = NodePath("../../Fishes")
 player = NodePath("../../PLayer")
 slider = NodePath("../../UI/BG_Slider")
+phrase = NodePath("../../Phrases/Phrase01")
 
 [node name="PLayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1130.75, 524.074 )
@@ -675,6 +719,165 @@ shape = SubResource( 21 )
 anims/Pos_Net = SubResource( 22 )
 anims/Pre_Net = SubResource( 23 )
 
+[node name="Phrases" type="Node2D" parent="."]
+
+[node name="Phrase01" type="Sprite" parent="Phrases"]
+visible = false
+position = Vector2( -781.962, 67.4721 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 54 )
+
+[node name="Phrase02" type="Sprite" parent="Phrases"]
+visible = false
+position = Vector2( -458, 678 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 52 )
+
+[node name="Phrase03" type="Sprite" parent="Phrases"]
+visible = false
+position = Vector2( 1317.88, 50.3969 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 53 )
+
+[node name="Phrase04" type="Sprite" parent="Phrases"]
+visible = false
+position = Vector2( 1874.76, 279.702 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 51 )
+
+[node name="Phrase05" type="Sprite" parent="Phrases"]
+visible = false
+position = Vector2( -5.03967, 302.381 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 55 )
+
+[node name="AsstesPlastic" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite" type="Sprite" parent="AsstesPlastic"]
+material = ExtResource( 17 )
+position = Vector2( -1234.59, 940.099 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 48 )
+hframes = 4
+
+[node name="Sprite8" type="Sprite" parent="AsstesPlastic"]
+material = ExtResource( 17 )
+position = Vector2( 883.467, 891.017 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 48 )
+hframes = 4
+
+[node name="Sprite9" type="Sprite" parent="AsstesPlastic"]
+material = ExtResource( 17 )
+position = Vector2( 1657.44, 775.865 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 48 )
+hframes = 4
+
+[node name="Sprite10" type="Sprite" parent="AsstesPlastic"]
+material = ExtResource( 17 )
+position = Vector2( 2163.36, 247.295 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 48 )
+hframes = 4
+
+[node name="Sprite2" type="Sprite" parent="AsstesPlastic"]
+material = ExtResource( 17 )
+position = Vector2( -911.677, 941.614 )
+rotation = -4.2429
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 48 )
+hframes = 4
+frame = 1
+
+[node name="Sprite11" type="Sprite" parent="AsstesPlastic"]
+material = ExtResource( 17 )
+position = Vector2( 109.595, 939.726 )
+rotation = -4.2429
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 48 )
+hframes = 4
+frame = 1
+
+[node name="Sprite12" type="Sprite" parent="AsstesPlastic"]
+material = ExtResource( 17 )
+position = Vector2( 1068.57, 826.461 )
+rotation = -4.2429
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 48 )
+hframes = 4
+frame = 1
+
+[node name="Sprite13" type="Sprite" parent="AsstesPlastic"]
+material = ExtResource( 17 )
+position = Vector2( 1855.76, 626.36 )
+rotation = -4.2429
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 48 )
+hframes = 4
+frame = 1
+
+[node name="Sprite3" type="Sprite" parent="AsstesPlastic"]
+material = ExtResource( 17 )
+position = Vector2( 1696.5, 608.594 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 48 )
+hframes = 4
+frame = 2
+
+[node name="Sprite7" type="Sprite" parent="AsstesPlastic"]
+material = ExtResource( 17 )
+position = Vector2( 1026.35, 803.032 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 48 )
+hframes = 4
+frame = 2
+
+[node name="Sprite4" type="Sprite" parent="AsstesPlastic"]
+material = ExtResource( 17 )
+position = Vector2( -100.4, 925.937 )
+rotation = 1.14319
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 48 )
+hframes = 4
+frame = 3
+
+[node name="Sprite5" type="Sprite" parent="AsstesPlastic"]
+material = ExtResource( 17 )
+position = Vector2( -1061.26, 873.08 )
+rotation = 1.14319
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 48 )
+hframes = 4
+frame = 3
+
+[node name="Sprite6" type="Sprite" parent="AsstesPlastic"]
+material = ExtResource( 17 )
+position = Vector2( 1322.96, 890.07 )
+rotation = 1.14319
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 48 )
+hframes = 4
+frame = 3
+
+[node name="Sprite14" type="Sprite" parent="AsstesPlastic"]
+material = ExtResource( 17 )
+position = Vector2( 74.008, -81.7507 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 49 )
+
+[node name="Sprite15" type="Sprite" parent="AsstesPlastic"]
+material = ExtResource( 17 )
+position = Vector2( 346.444, -75.2219 )
+rotation = 2.96156
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 50 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AsstesPlastic/Sprite15"]
+autoplay = "PropellerAnimation"
+anims/PropellerAnimation = SubResource( 24 )
+
 [node name="DistortionEffect" type="Sprite" parent="."]
 material = ExtResource( 8 )
 position = Vector2( 284.05, 426.536 )
@@ -693,14 +896,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 game_scene = "res://Scenes/GameScene/GameScene.tscn"
+menu_scene = "res://Scenes/MainMenu/MainMenu.tscn"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/FadeOut"]
-anims/EndFadeOut = SubResource( 24 )
-anims/FadeOut = SubResource( 25 )
+anims/EndFadeOut = SubResource( 25 )
+anims/FadeOut = SubResource( 26 )
+
+[node name="Sprite" type="Sprite" parent="UI/FadeOut"]
+modulate = Color( 1, 1, 1, 0.125 )
+position = Vector2( 516.091, 270.454 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 56 )
+
+[node name="Sprite2" type="Sprite" parent="UI/FadeOut"]
+visible = false
+position = Vector2( 524.128, 511.528 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 57 )
 
 [node name="SmokeFadeOut" type="ColorRect" parent="UI"]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = -1.0
 color = Color( 0.309804, 0.309804, 0.309804, 1 )
 script = ExtResource( 16 )
 __meta__ = {
@@ -708,16 +927,17 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/SmokeFadeOut"]
-anims/FadeOut = SubResource( 26 )
+anims/FadeOut = SubResource( 27 )
 
 [node name="Keys" type="Sprite" parent="UI"]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 712.626, 300.265 )
 scale = Vector2( 0.195, 0.195 )
 texture = ExtResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Keys"]
 autoplay = "Start"
-anims/Start = SubResource( 27 )
+anims/Start = SubResource( 28 )
 
 [node name="Run" type="Sprite" parent="UI"]
 modulate = Color( 1, 1, 1, 0 )
@@ -726,8 +946,8 @@ scale = Vector2( 0.244077, 0.243405 )
 texture = ExtResource( 21 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Run"]
-anims/End = SubResource( 28 )
-anims/Start = SubResource( 29 )
+anims/End = SubResource( 29 )
+anims/Start = SubResource( 30 )
 
 [node name="BG_Slider" type="Sprite" parent="UI"]
 position = Vector2( 371.816, 467.676 )
@@ -753,8 +973,8 @@ margin_bottom = 60.0
 custom_icons/grabber_disabled = ExtResource( 34 )
 custom_icons/grabber_highlight = ExtResource( 34 )
 custom_icons/grabber = ExtResource( 34 )
-custom_styles/slider = SubResource( 30 )
-custom_styles/grabber_area = SubResource( 31 )
+custom_styles/slider = SubResource( 31 )
+custom_styles/grabber_area = SubResource( 32 )
 editable = false
 scrollable = false
 __meta__ = {
