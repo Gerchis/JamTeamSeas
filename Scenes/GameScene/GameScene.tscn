@@ -1031,11 +1031,11 @@ texture = ExtResource( 38 )
 
 [node name="GoodCheck" type="AudioStreamPlayer" parent="UI/BG_Slider"]
 stream = ExtResource( 60 )
-volume_db = -20.0
+volume_db = -30.0
 
 [node name="WrongCheck" type="AudioStreamPlayer" parent="UI/BG_Slider"]
 stream = ExtResource( 61 )
-volume_db = -20.0
+volume_db = -25.0
 
 [connection signal="start_running" from="PLayer" to="FishingNet" method="_on_PLayer_start_running"]
 [connection signal="stop_movement" from="FishingNet" to="PLayer" method="_on_FishingNet_stop_movement"]
