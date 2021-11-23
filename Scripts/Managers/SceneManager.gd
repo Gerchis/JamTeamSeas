@@ -1,6 +1,7 @@
 extends Node
 
 var current_scene = null
+var mute := false
 
 func _ready() -> void:
 	var root = get_tree().get_root()

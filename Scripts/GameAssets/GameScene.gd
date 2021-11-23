@@ -11,6 +11,10 @@ export var max_fish_trapped := 5
 
 var fish_saved := 0
 
+func _ready() -> void:
+	if !SceneManager.mute:
+		AudioServer.set_bus_volume_db(0, 0)
+
 func grayscale_assets(_factor : float):
 	for i in range(0, sprite_list.size()):
 		
