@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/MashUpSongUnderwater.mp3-20a3bf915d0cf61f8629e5cb63fcef33.mp3str"
+
+[deps]
+
+source_file="res://BSO/MashUpSongUnderwater.mp3"
+dest_files=[ "res://.import/MashUpSongUnderwater.mp3-20a3bf915d0cf61f8629e5cb63fcef33.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
