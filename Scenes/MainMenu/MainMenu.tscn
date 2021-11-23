@@ -281,10 +281,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 game_scene = "res://Scenes/GameScene/GameScene.tscn"
-audio_texture = [ ExtResource( 22 ), ExtResource( 21 ) ]
+audio_texture = [ ExtResource( 21 ), ExtResource( 22 ) ]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
+volume_db = -30.0
 autoplay = true
 
 [node name="Reef_03" type="Sprite" parent="."]
@@ -481,9 +482,16 @@ position = Vector2( 559.201, 325.395 )
 scale = Vector2( 0.610417, 0.62963 )
 texture = ExtResource( 12 )
 
+[node name="WaterEffect_02" type="Sprite" parent="."]
+material = ExtResource( 14 )
+position = Vector2( 520.377, 306.453 )
+scale = Vector2( 0.567629, 0.574089 )
+texture = ExtResource( 3 )
+
 [node name="MuteButton" type="Sprite" parent="."]
-position = Vector2( 971.976, 50.3435 )
-texture = ExtResource( 21 )
+position = Vector2( 992.742, 32.3841 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 22 )
 
 [node name="Button2" type="Button" parent="MuteButton"]
 modulate = Color( 1, 1, 1, 0 )
@@ -498,12 +506,6 @@ align = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="WaterEffect_02" type="Sprite" parent="."]
-material = ExtResource( 14 )
-position = Vector2( 520.377, 306.453 )
-scale = Vector2( 0.567629, 0.574089 )
-texture = ExtResource( 3 )
 
 [node name="IconBestExperience" type="Sprite" parent="."]
 position = Vector2( 53, 51 )

@@ -57,7 +57,7 @@
 [ext_resource path="res://Sprites/Texts/TXTS_0004_IN-2018,-THE-GLOBAL-PRODUCTION-OF-PLASTICS-WAS-359-MILLION--TON.png" type="Texture" id=55]
 [ext_resource path="res://Sprites/Texts/TXTSFinal.png" type="Texture" id=56]
 [ext_resource path="res://Sprites/Texts/TXTSPressAnyKey.png" type="Texture" id=57]
-[ext_resource path="res://MashUpSongUnderwater.mp3" type="AudioStream" id=58]
+[ext_resource path="res://MashUpSongUnderwater_001.mp3" type="AudioStream" id=58]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4007.22, 100.945 )
@@ -318,10 +318,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 5.1, 12, 14.1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.2, 5.1, 12, 14.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath("../../PLayer")
@@ -347,10 +347,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 13.1, 14.7 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.2, 13.1, 14.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=26]
@@ -484,6 +484,11 @@ sprite_list = [ NodePath("AbissalSea"), NodePath("ReefBackground"), NodePath("Se
 new_sprites = [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 24 ) ]
 hiddenFish = [ NodePath("TrappedFishes/TrappedFish"), NodePath("TrappedFishes/TrappedFish2"), NodePath("TrappedFishes/TrappedFish3"), NodePath("TrappedFishes/TrappedFish4"), NodePath("TrappedFishes/TrappedFish5") ]
 swimming_fish = [ NodePath("Fishes/Fish_01"), NodePath("Fishes/Fish_02"), NodePath("Fishes/Fish_03"), NodePath("Fishes/Fish_04"), NodePath("Fishes/Fish_05") ]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 58 )
+volume_db = -3.0
+autoplay = true
 
 [node name="AbissalSea" type="Sprite" parent="."]
 material = ExtResource( 17 )
@@ -888,7 +893,7 @@ texture = ExtResource( 2 )
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="FadeOut" type="ColorRect" parent="UI"]
-modulate = Color( 1, 1, 1, 0.0284172 )
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
@@ -904,7 +909,7 @@ anims/EndFadeOut = SubResource( 25 )
 anims/FadeOut = SubResource( 26 )
 
 [node name="Sprite" type="Sprite" parent="UI/FadeOut"]
-modulate = Color( 1, 1, 1, 0.125 )
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 516.091, 270.454 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 56 )
@@ -986,10 +991,6 @@ __meta__ = {
 position = Vector2( 434.295, 222.72 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 38 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 58 )
-autoplay = true
 
 [connection signal="start_running" from="PLayer" to="FishingNet" method="_on_PLayer_start_running"]
 [connection signal="stop_movement" from="FishingNet" to="PLayer" method="_on_FishingNet_stop_movement"]
