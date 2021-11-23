@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Sprites/Reef/SpriteSheetAnimationReefCoral_002.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Reef/NoAnimationReef_002.png" type="Texture" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://Scripts/MainMenu/MainMenu.gd" type="Script" id=18]
 [ext_resource path="res://BSO/On the Island - Godmode.mp3" type="AudioStream" id=19]
 [ext_resource path="res://Sprites/Texts/TXTSBestExperience.png" type="Texture" id=20]
+[ext_resource path="res://btnNoVolume.png" type="Texture" id=21]
+[ext_resource path="res://btnVolume.png" type="Texture" id=22]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Seaweed_01"
@@ -279,10 +281,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 game_scene = "res://Scenes/GameScene/GameScene.tscn"
+audio_texture = [ ExtResource( 22 ), ExtResource( 21 ) ]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
-volume_db = -34.33
 autoplay = true
 
 [node name="Reef_03" type="Sprite" parent="."]
@@ -479,6 +481,24 @@ position = Vector2( 559.201, 325.395 )
 scale = Vector2( 0.610417, 0.62963 )
 texture = ExtResource( 12 )
 
+[node name="MuteButton" type="Sprite" parent="."]
+position = Vector2( 971.976, 50.3435 )
+texture = ExtResource( 21 )
+
+[node name="Button2" type="Button" parent="MuteButton"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -140.976
+margin_top = -50.3435
+margin_right = -40.9758
+margin_bottom = 49.6565
+clip_text = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="WaterEffect_02" type="Sprite" parent="."]
 material = ExtResource( 14 )
 position = Vector2( 520.377, 306.453 )
@@ -512,4 +532,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="button_down" from="MuteButton/Button2" to="." method="_on_Button2_button_down"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

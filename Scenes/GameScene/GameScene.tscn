@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=2]
+[gd_scene load_steps=91 format=2]
 
 [ext_resource path="res://Scenes/GameScene/PLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Background/fodoUnderwaterPrueba_01.png" type="Texture" id=2]
@@ -57,6 +57,7 @@
 [ext_resource path="res://Sprites/Texts/TXTS_0004_IN-2018,-THE-GLOBAL-PRODUCTION-OF-PLASTICS-WAS-359-MILLION--TON.png" type="Texture" id=55]
 [ext_resource path="res://Sprites/Texts/TXTSFinal.png" type="Texture" id=56]
 [ext_resource path="res://Sprites/Texts/TXTSPressAnyKey.png" type="Texture" id=57]
+[ext_resource path="res://MashUpSongUnderwater.mp3" type="AudioStream" id=58]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4007.22, 100.945 )
@@ -985,6 +986,10 @@ __meta__ = {
 position = Vector2( 434.295, 222.72 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 38 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 58 )
+autoplay = true
 
 [connection signal="start_running" from="PLayer" to="FishingNet" method="_on_PLayer_start_running"]
 [connection signal="stop_movement" from="FishingNet" to="PLayer" method="_on_FishingNet_stop_movement"]
