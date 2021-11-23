@@ -4,6 +4,9 @@ export (String, FILE) var game_scene
 export (Array, Texture) var audio_texture
 
 func _on_Button_pressed() -> void:
+	$AudioStreamPlayer.stop()
+	$Timer.start()
+	yield($Timer, "timeout")
 	SceneManager.goto_scene(game_scene)
 
 func mute_audio():
