@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/554053__gronkjaer__wronganswer.mp3-cb353d17d855e4eae616ab03a6df9072.mp3str"
+
+[deps]
+
+source_file="res://BSO/554053__gronkjaer__wronganswer.mp3"
+dest_files=[ "res://.import/554053__gronkjaer__wronganswer.mp3-cb353d17d855e4eae616ab03a6df9072.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

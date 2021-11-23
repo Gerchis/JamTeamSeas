@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://Scenes/GameScene/PLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Background/fodoUnderwaterPrueba_01.png" type="Texture" id=2]
@@ -59,6 +59,8 @@
 [ext_resource path="res://Sprites/Texts/TXTSPressAnyKey.png" type="Texture" id=57]
 [ext_resource path="res://MashUpSongUnderwater_001.mp3" type="AudioStream" id=58]
 [ext_resource path="res://Scripts/MainMenu/BubblesOrigin.gd" type="Script" id=59]
+[ext_resource path="res://BSO/421002__eponn__correct.wav" type="AudioStream" id=60]
+[ext_resource path="res://BSO/554053__gronkjaer__wronganswer.mp3" type="AudioStream" id=61]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4007.22, 100.945 )
@@ -1026,6 +1028,14 @@ __meta__ = {
 position = Vector2( 434.295, 222.72 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 38 )
+
+[node name="GoodCheck" type="AudioStreamPlayer" parent="UI/BG_Slider"]
+stream = ExtResource( 60 )
+volume_db = -20.0
+
+[node name="WrongCheck" type="AudioStreamPlayer" parent="UI/BG_Slider"]
+stream = ExtResource( 61 )
+volume_db = -20.0
 
 [connection signal="start_running" from="PLayer" to="FishingNet" method="_on_PLayer_start_running"]
 [connection signal="stop_movement" from="FishingNet" to="PLayer" method="_on_FishingNet_stop_movement"]

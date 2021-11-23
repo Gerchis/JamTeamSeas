@@ -46,14 +46,18 @@ func _process(delta: float) -> void:
 			if rounds >= max_rounds - 1:
 				emit_signal("minigame_complete", sender_path)
 				hide()
+				$GoodCheck.play()
 			else:
 				rounds += 1
 				$HSlider.value = 0.0
 				speed *= increment_factor
 				randomize_key()
+				
+				$GoodCheck.play()
 		
 		if $HSlider.value >= 100:
 			emit_signal("minigame_failed", sender_path)
+			$WrongCheck.play()
 			hide()
 
 func randomize_key():
